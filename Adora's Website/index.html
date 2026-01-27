@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Adora Lin | Writer Portfolio</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2e5b6b",
+                        "primary-light": "#3d7a8c",
+                        "background-light": "#fbfaf9",
+                        "background-dark": "#21242c",
+                        "text-main": "#131516",
+                        "text-muted": "#6c7a7f",
+                    },
+                    fontFamily: {
+                        "display": ["Epilogue", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    backgroundImage: {
+                        'paper-texture': "url(\"data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' opacity='0.5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E\")",
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f3f3;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        
+        .hover-lift {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-background-light font-display text-text-main antialiased selection:bg-primary/20 selection:text-primary relative">
+    <!-- Grain Overlay -->
+    <div class="fixed inset-0 pointer-events-none z-0 bg-paper-texture mix-blend-multiply opacity-50"></div>
+    
+    <div class="relative z-10 flex min-h-screen w-full flex-col overflow-x-hidden">
+        <!-- Navigation -->
+        <header class="sticky top-0 z-50 w-full border-b border-black/5 bg-background-light/90 backdrop-blur-md transition-all duration-300">
+            <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-12">
+                <div class="flex items-center gap-3 group cursor-pointer">
+                    <span class="material-symbols-outlined text-primary text-3xl group-hover:rotate-12 transition-transform duration-300">history_edu</span>
+                    <span class="font-serif text-2xl font-bold tracking-tight text-text-main">Adora Lin</span>
+                </div>
+                <nav class="hidden md:flex items-center gap-10">
+                    <a class="text-sm font-medium text-primary border-b-2 border-primary pb-0.5" href="index.html">Home</a>
+                    <a class="text-sm font-medium text-text-main/70 hover:text-primary transition-colors" href="stories.html">Stories</a>
+                    <a class="text-sm font-medium text-text-main/70 hover:text-primary transition-colors" href="#about">About</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <button class="md:hidden p-2 text-text-main">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-grow">
+            <!-- Hero Section -->
+            <section class="relative px-6 py-16 lg:px-12 lg:py-24 2xl:py-32">
+                <div class="mx-auto grid max-w-7xl grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-20 items-center">
+                    <!-- Hero Content -->
+                    <div class="lg:col-span-7 flex flex-col gap-8 order-2 lg:order-1">
+                        <div class="space-y-6">
+                            <span class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">
+                                <span class="h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+                                Young Writer
+                            </span>
+                            <h1 class="font-serif text-5xl font-medium leading-[1.1] tracking-tight text-text-main sm:text-6xl xl:text-7xl">
+                                Creating magical worlds where <span class="italic text-primary">friendship</span> conquers all.
+                            </h1>
+                            <p class="max-w-xl text-lg leading-relaxed text-text-muted md:text-xl">
+                                Hi! I'm Adora Love Lin, a young author who loves writing stories about underwater adventures, brave heroes, and the power of friendship. Come explore the world of Floofy the Axolotl!
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-4 pt-2">
+                            <a href="stories.html" class="group flex h-12 items-center gap-2 rounded-lg bg-text-main px-6 text-base font-bold text-white transition-all hover:bg-black active:scale-95">
+                                <span>Read My Stories</span>
+                                <span class="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1">arrow_forward</span>
+                            </a>
+                            <a href="#about" class="flex h-12 items-center justify-center rounded-lg border border-black/10 bg-transparent px-6 text-base font-bold text-text-main transition-colors hover:bg-black/5 hover:border-black/20">
+                                About Me
+                            </a>
+                        </div>
+                        <div class="flex items-center gap-8 border-t border-black/5 pt-8 text-sm text-text-muted">
+                            <div class="flex flex-col">
+                                <span class="font-bold text-text-main text-2xl font-serif">2</span>
+                                <span>Chapters Written</span>
+                            </div>
+                            <div class="w-px h-10 bg-black/10"></div>
+                            <div class="flex flex-col">
+                                <span class="font-bold text-text-main text-2xl font-serif">2</span>
+                                <span>Main Characters</span>
+                            </div>
+                            <div class="w-px h-10 bg-black/10"></div>
+                            <div class="flex flex-col">
+                                <span class="font-bold text-text-main text-2xl font-serif">∞</span>
+                                <span>Adventures Await</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Hero Image -->
+                    <div class="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end">
+                        <div class="relative w-full max-w-[240px] lg:max-w-[280px] overflow-hidden rounded-xl shadow-2xl bg-sky-50">
+                            <img src="Chapter_one_cover_page.jpeg" alt="Floofy the Axolotl Book Cover" class="w-full h-auto object-contain hover:scale-105 transition-transform duration-500"/>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Stories Section -->
+            <section class="bg-white/50 py-20 lg:py-32 px-6 lg:px-12 border-y border-black/5" id="stories">
+                <div class="mx-auto max-w-7xl">
+                    <div class="mb-16 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+                        <div class="max-w-2xl">
+                            <h2 class="font-serif text-3xl font-bold text-text-main md:text-4xl">The Adventures of Floofy</h2>
+                            <p class="mt-4 text-text-muted text-lg">Join Floofy the Axolotl and her friends on exciting underwater adventures. Each chapter brings new mysteries and friendships!</p>
+                        </div>
+                        <a class="group flex items-center gap-1 text-sm font-bold text-primary hover:text-primary/80" href="stories.html">
+                            View All Stories
+                            <span class="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1">arrow_right_alt</span>
+                        </a>
+                    </div>
+                    <div class="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
+                        <!-- Book Card 1: Chapter 1 -->
+                        <a href="chapter1.html" class="group cursor-pointer">
+                            <div class="hover-lift relative mb-4 w-full overflow-hidden rounded-lg shadow-md bg-sky-50">
+                                <img src="Chapter_one_cover_page.jpeg" alt="Chapter 1 Cover" class="w-full h-auto object-contain"/>
+                                <div class="absolute inset-0 bg-primary/80 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex items-end p-4">
+                                    <p class="font-serif text-base italic text-white">Read →</p>
+                                </div>
+                            </div>
+                            <h3 class="text-base font-bold text-text-main leading-tight">Chapter 1: Think Before You Act</h3>
+                            <p class="text-xs text-text-muted mt-1 line-clamp-2">Orca challenges Floofy to a race in the Crystal River!</p>
+                        </a>
+
+                        <!-- Book Card 2: Chapter 2 -->
+                        <a href="chapter2.html" class="group cursor-pointer">
+                            <div class="hover-lift relative mb-4 w-full overflow-hidden rounded-lg shadow-md bg-cyan-50">
+                                <img src="Chapter_two_cover_page.jpeg" alt="Chapter 2 Cover" class="w-full h-auto object-contain"/>
+                                <div class="absolute inset-0 bg-primary/80 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex items-end p-4">
+                                    <p class="font-serif text-base italic text-white">Read →</p>
+                                </div>
+                            </div>
+                            <h3 class="text-base font-bold text-text-main leading-tight">Chapter 2: Floofy's BIG Idea!!</h3>
+                            <p class="text-xs text-text-muted mt-1 line-clamp-2">The Gem of the Sea is stolen!</p>
+                        </a>
+
+                        <!-- Book Card 3: Coming Soon -->
+                        <div class="group cursor-not-allowed opacity-60">
+                            <div class="relative mb-4 w-full overflow-hidden rounded-lg bg-gradient-to-br from-gray-200 to-gray-300 shadow-md py-12">
+                                <div class="flex flex-col items-center justify-center p-4 text-center">
+                                    <span class="material-symbols-outlined text-gray-400 text-4xl mb-2">lock</span>
+                                    <h3 class="font-serif text-lg font-bold text-gray-500">Coming Soon</h3>
+                                    <p class="mt-1 text-[10px] font-medium uppercase tracking-widest text-gray-400">Chapter 3</p>
+                                </div>
+                            </div>
+                            <h3 class="text-base font-bold text-gray-400 leading-tight">Chapter 3: ???</h3>
+                            <p class="text-xs text-gray-400 mt-1">Coming soon...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Characters Section -->
+            <section class="py-20 lg:py-32 px-6 lg:px-12" id="characters">
+                <div class="mx-auto max-w-7xl">
+                    <div class="mb-12 text-center">
+                        <h2 class="font-serif text-3xl font-bold text-text-main md:text-4xl">Meet the Characters</h2>
+                        <p class="mt-4 text-text-muted text-lg max-w-2xl mx-auto">The wonderful friends who make every adventure special</p>
+                    </div>
+                    <div class="grid grid-cols-1 gap-12 md:grid-cols-2 max-w-4xl mx-auto">
+                        <!-- Floofy -->
+                        <div class="group bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-lg hover:border-primary/20 transition-all duration-300 text-center">
+                            <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-pink-100 to-pink-50 flex items-center justify-center p-4">
+                                <img src="../Chapter1/Floofy_the_axolotl.png" alt="Floofy" class="w-full h-auto"/>
+                            </div>
+                            <h3 class="text-xl font-bold text-text-main">Floofy</h3>
+                            <p class="text-primary text-sm font-medium uppercase tracking-wider mt-1">The Hero</p>
+                            <p class="text-text-muted mt-4 text-sm leading-relaxed">A cheerful, kind-hearted axolotl who loves making friends and going on adventures. She's brave, curious, and always tries to help others!</p>
+                        </div>
+                        <!-- Popcorn -->
+                        <div class="group bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-lg hover:border-primary/20 transition-all duration-300 text-center">
+                            <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-orange-100 to-orange-50 flex items-center justify-center p-4">
+                                <img src="../Chapter1/Popcorn_the_Lobster.png" alt="Popcorn" class="w-full h-auto"/>
+                            </div>
+                            <h3 class="text-xl font-bold text-text-main">Popcorn</h3>
+                            <p class="text-primary text-sm font-medium uppercase tracking-wider mt-1">Best Friend</p>
+                            <p class="text-text-muted mt-4 text-sm leading-relaxed">Floofy's best friend and loyal companion. He's always ready to help solve mysteries and go on exciting adventures together!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section class="bg-white/50 py-20 lg:py-32 px-6 lg:px-12 border-t border-black/5" id="about">
+                <div class="mx-auto max-w-4xl text-center">
+                    <h2 class="font-serif text-3xl font-bold text-text-main md:text-4xl mb-6">About the Author</h2>
+                    <p class="text-text-muted text-lg leading-relaxed mb-8">
+                        Hi! I'm <strong class="text-text-main">Adora Love Lin</strong>, a young writer who loves creating stories about friendship, adventure, and magical underwater worlds. 
+                        "Floofy the Axolotl" is my first book series, and I hope it makes you smile and believe in the power of helping others!
+                    </p>
+                    <p class="text-text-muted text-lg leading-relaxed">
+                        When I'm not writing, I am drawing abstract art, enjoying time with my sibling, and of course, dreaming up more stories for Floofy!
+                    </p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-primary text-white py-16 px-6 lg:px-12 mt-auto">
+            <div class="mx-auto max-w-7xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                    <div class="col-span-1 lg:col-span-2">
+                        <div class="flex items-center gap-2 mb-6">
+                            <span class="material-symbols-outlined text-2xl">history_edu</span>
+                            <span class="font-serif text-2xl font-bold">Adora Lin</span>
+                        </div>
+                        <p class="max-w-sm text-white/80 leading-relaxed">
+                            Creating magical stories that bridge the gap between imagination and reality. Thanks for reading!
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-6">Explore</h4>
+                        <ul class="space-y-4">
+                            <li><a class="text-white/70 hover:text-white transition-colors" href="stories.html">All Stories</a></li>
+                            <li><a class="text-white/70 hover:text-white transition-colors" href="#characters">Characters</a></li>
+                            <li><a class="text-white/70 hover:text-white transition-colors" href="#about">About Me</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-6">Stories</h4>
+                        <ul class="space-y-4">
+                            <li><a class="text-white/70 hover:text-white transition-colors" href="chapter1.html">Chapter 1: Think Before You Act</a></li>
+                            <li><a class="text-white/70 hover:text-white transition-colors" href="chapter2.html">Chapter 2: Floofy's BIG Idea!!</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/50">
+                    <p>© 2026 Adora Love Lin. All rights reserved.</p>
+                    <p>Made with ♥ by Adora Love Lin</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
+
