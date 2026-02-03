@@ -28,15 +28,6 @@
                         "display": ["Epilogue", "sans-serif"],
                         "serif": ["Playfair Display", "serif"],
                     },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    backgroundImage: {
-                        'paper-texture': "url(\"data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' opacity='0.5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E\")",
-                    }
                 },
             },
         }
@@ -55,66 +46,23 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #94a3b8;
         }
-        
-        .hover-lift {
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
-        }
-        .hover-lift:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.15);
-        }
-        
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        
-        .scroll-reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .stories-hidden {
-            display: none;
-        }
-        
-        .chapter-cover-trigger {
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .chapter-cover-trigger:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
-        }
-        
-        .drop-cap::first-letter {
-            font-size: 4rem;
-            line-height: 0.8;
-            float: left;
-            margin-right: 0.75rem;
-            margin-top: 0.2rem;
-            font-weight: 700;
-            color: #2e5b6b;
-            font-family: 'Playfair Display', serif;
-        }
     </style>
 </head>
 <body class="bg-background-light font-display text-text-main antialiased selection:bg-primary/20 selection:text-primary relative">
     <!-- Grain Overlay -->
-    <div class="fixed inset-0 pointer-events-none z-0 bg-paper-texture mix-blend-multiply opacity-50"></div>
+    <div class="fixed inset-0 pointer-events-none z-0 bg-[url('data:image/svg+xml,%3Csvg width=\'100\' height=\'100\' viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'3\' opacity=\'0.5\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'0.03\'/%3E%3C/svg%3E')] mix-blend-multiply opacity-50"></div>
     
     <div class="relative z-10 flex min-h-screen w-full flex-col overflow-x-hidden">
         <!-- Navigation -->
         <header class="sticky top-0 z-50 w-full border-b border-black/5 bg-background-light/90 backdrop-blur-md transition-all duration-300">
             <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-12">
-                <div class="flex items-center gap-3 group cursor-pointer">
+                <a href="index.html" class="flex items-center gap-3 group cursor-pointer">
                     <span class="material-symbols-outlined text-primary text-3xl group-hover:rotate-12 transition-transform duration-300">history_edu</span>
                     <span class="font-serif text-2xl font-bold tracking-tight text-text-main">Adora Lin</span>
-                </div>
+                </a>
                 <nav class="hidden md:flex items-center gap-10">
                     <a class="text-sm font-medium text-primary border-b-2 border-primary pb-0.5" href="index.html">Home</a>
+                    <a class="text-sm font-medium text-text-main/70 hover:text-primary transition-colors" href="books.html">Books</a>
                     <a class="text-sm font-medium text-text-main/70 hover:text-primary transition-colors" href="#about">About</a>
                 </nav>
                 <div class="flex items-center gap-4">
@@ -127,278 +75,43 @@
 
         <main class="flex-grow">
             <!-- Hero Section -->
-            <section class="relative px-6 py-16 lg:px-12 lg:py-24 2xl:py-32">
-                <div class="mx-auto max-w-7xl">
-                    <!-- Hero Content -->
-                    <div class="flex flex-col gap-8">
-                        <div class="space-y-6">
-                            <span class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">
-                                <span class="h-2 w-2 rounded-full bg-primary animate-pulse"></span>
-                                Young Writer
-                            </span>
-                            <h1 class="font-serif text-5xl font-medium leading-[1.1] tracking-tight text-text-main sm:text-6xl xl:text-7xl">
-                                Creating magical worlds where <span class="italic text-primary">friendship</span> conquers all.
-                            </h1>
-                            <p class="max-w-xl text-lg leading-relaxed text-text-muted md:text-xl">
-                                Adora Lin is a young writer who loves creating stories about mystical worlds and fascinating characters. All of her stories are written with care and hope that they lighten up your day!
-                            </p>
+            <section class="relative px-6 py-24 lg:px-12 lg:py-32 2xl:py-40 min-h-[80vh] flex items-center">
+                <div class="mx-auto max-w-7xl w-full">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                        <!-- Left: Text Content -->
+                        <div class="flex flex-col gap-8">
+                            <div class="space-y-6">
+                                <span class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">
+                                    <span class="h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+                                    Young Writer
+                                </span>
+                                <h1 class="font-serif text-5xl font-medium leading-[1.1] tracking-tight text-text-main sm:text-6xl xl:text-7xl">
+                                    Creating magical worlds where <span class="italic text-primary">friendship</span> conquers all.
+                                </h1>
+                                <p class="text-lg leading-relaxed text-text-muted md:text-xl">
+                                    Adora Lin is a young writer who loves creating stories about mystical worlds and fascinating characters. All of her stories are written with care and hope that they lighten up your day!
+                                </p>
+                            </div>
+                            <div class="flex flex-wrap gap-4 pt-4">
+                                <a href="books.html" class="group flex h-14 items-center gap-2 rounded-lg bg-text-main px-8 text-base font-bold text-white transition-all hover:bg-black active:scale-95 shadow-lg hover:shadow-xl">
+                                    <span>Explore My Books</span>
+                                    <span class="material-symbols-outlined text-xl transition-transform group-hover:translate-x-1">arrow_forward</span>
+                                </a>
+                                <a href="#about" class="flex h-14 items-center justify-center rounded-lg border border-black/10 bg-transparent px-8 text-base font-bold text-text-main transition-colors hover:bg-black/5 hover:border-black/20">
+                                    About Me
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Divider Line -->
-            <div class="border-t border-black/10"></div>
-
-            <!-- Scroll-Triggered Chapter 1 Cover Section -->
-            <section class="relative px-6 py-20 lg:px-12 lg:py-32 min-h-[60vh] flex items-center justify-center" id="chapter-trigger">
-                <div class="mx-auto max-w-7xl w-full flex justify-center gap-8 flex-wrap">
-                    <div class="scroll-reveal chapter-cover-trigger relative w-full max-w-[300px] lg:max-w-[400px] overflow-hidden rounded-xl shadow-2xl bg-sky-50" id="chapter-cover">
-                        <img src="Chapter_one_cover_page.jpeg" alt="Chapter 1: Think Before You Act - Click to explore Floofy's adventures" class="w-full h-auto object-contain"/>
-                        <div class="absolute inset-0 bg-black/0 hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
-                            <p class="text-white font-serif text-xl font-bold opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none">Click to Explore Adventures</p>
-                        </div>
-                    </div>
-                    <div class="scroll-reveal chapter-cover-trigger relative w-full max-w-[300px] lg:max-w-[400px] overflow-hidden rounded-xl shadow-2xl bg-black cursor-pointer transition-transform duration-300 hover:scale-105" id="little-fire-cover">
-                        <img src="A_Little_Fire/A_Little_Fire_cover_page.png" alt="A Little Fire Cover" class="w-full h-auto object-contain"/>
-                        <div class="absolute inset-0 bg-black/0 hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
-                            <p class="text-white font-serif text-xl font-bold opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none">Click to Read Story</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Stories Section -->
-            <section class="bg-white/50 py-20 lg:py-32 px-6 lg:px-12 border-y border-black/5 stories-hidden" id="stories">
-                <div class="max-w-[1440px] mx-auto w-full">
-                    <div class="flex flex-col lg:flex-row gap-8 xl:gap-12">
-                        <!-- Sidebar -->
-                        <aside class="w-full lg:w-64 flex-shrink-0">
-                            <div class="lg:sticky lg:top-24 space-y-8">
-                                <div class="hidden lg:block space-y-8">
-                                    <!-- Page Heading -->
-                                    <div class="mb-8">
-                                        <h1 class="text-4xl font-black tracking-tight text-text-main mb-2">The Adventures</h1>
-                                        <p class="text-text-muted text-sm leading-relaxed">
-                                            All chapters of Floofy the Axolotl's underwater adventures. New chapters coming soon!
-                                        </p>
-                                        <!-- Reading Mode Info -->
-                                        <div class="mt-4 p-3 bg-primary/5 rounded-lg border border-primary/10">
-                                            <p class="text-xs text-primary font-medium flex items-center gap-2">
-                                                <span class="material-symbols-outlined text-[16px]">info</span>
-                                                Two reading modes available: Text & Comic!
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <!-- Book Info -->
-                                    <div class="space-y-4 p-4 bg-white rounded-lg border border-gray-100 shadow-sm">
-                                        <div class="flex items-center gap-3">
-                                            <img src="Chapter_one_cover_page.jpeg" alt="Floofy Book Cover" class="w-14 h-auto rounded shadow-sm"/>
-                                            <div>
-                                                <h3 class="font-bold text-sm">Floofy the Axolotl</h3>
-                                                <p class="text-xs text-text-muted">by Adora Love Lin</p>
-                                            </div>
-                                        </div>
-                                        <div class="pt-3 border-t border-gray-100 space-y-2">
-                                            <div class="flex justify-between text-xs">
-                                                <span class="text-text-muted">Chapters</span>
-                                                <span class="font-bold">2</span>
-                                            </div>
-                                            <div class="flex justify-between text-xs">
-                                                <span class="text-text-muted">Status</span>
-                                                <span class="font-bold text-primary">Ongoing</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Characters Quick View -->
-                                    <div class="space-y-4">
-                                        <h3 class="font-bold text-sm uppercase tracking-wider text-text-muted">Characters</h3>
-                                        <div class="space-y-2">
-                                            <!-- Floofy -->
-                                            <div class="character-card cursor-pointer" onclick="toggleCharacter('floofy')">
-                                                <div class="flex items-center gap-3 p-2 rounded-lg bg-white border border-gray-100 hover:border-primary/30 transition-all">
-                                                    <img src="Chapter1/Floofy_the_axolotl.png" alt="Floofy" class="w-10 h-auto"/>
-                                                    <span class="text-sm font-bold text-primary">Floofy</span>
-                                                    <span class="material-symbols-outlined text-text-muted text-[16px] ml-auto transition-transform" id="floofy-arrow">expand_more</span>
-                                                </div>
-                                                <div id="floofy-desc" class="hidden mt-2 p-3 bg-sky-50 rounded-lg text-xs text-text-muted leading-relaxed border border-sky-100">
-                                                    🌸 <strong>Floofy the Axolotl</strong> is a cheerful, kind-hearted axolotl who loves making friends and going on adventures. She's brave, curious, and always tries to help others!
-                                                </div>
-                                            </div>
-                                            <!-- Popcorn -->
-                                            <div class="character-card cursor-pointer" onclick="toggleCharacter('popcorn')">
-                                                <div class="flex items-center gap-3 p-2 rounded-lg bg-white border border-gray-100 hover:border-primary/30 transition-all">
-                                                    <img src="Chapter1/Popcorn_the_Lobster.png" alt="Popcorn" class="w-10 h-auto"/>
-                                                    <span class="text-sm font-medium text-text-muted">Popcorn</span>
-                                                    <span class="material-symbols-outlined text-text-muted text-[16px] ml-auto transition-transform" id="popcorn-arrow">expand_more</span>
-                                                </div>
-                                                <div id="popcorn-desc" class="hidden mt-2 p-3 bg-red-50 rounded-lg text-xs text-text-muted leading-relaxed border border-red-100">
-                                                    🦞 <strong>Popcorn the Lobster</strong> is Floofy's best friend and loyal companion. He's always ready to help solve mysteries and go on exciting adventures together!
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                        <!-- Right: Photo -->
+                        <div class="flex justify-center lg:justify-end">
+                            <div class="relative w-full max-w-sm">
+                                <div class="relative overflow-hidden rounded-2xl shadow-2xl">
+                                    <img src="myphoto.JPG" alt="Adora Lin" class="w-full h-auto object-cover"/>
                                 </div>
+                                <!-- Decorative elements -->
+                                <div class="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl -z-10"></div>
+                                <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-primary/5 rounded-full blur-3xl -z-10"></div>
                             </div>
-                        </aside>
-
-                        <!-- Main Grid -->
-                        <main class="flex-1 min-w-0">
-                            <!-- Toolbar -->
-                            <div class="flex flex-wrap items-center justify-between gap-4 mb-6 pb-4 border-b border-gray-200">
-                                <p class="text-sm font-medium text-text-muted">Showing <span class="text-text-main font-bold">2</span> chapters</p>
-                            </div>
-
-                            <!-- Chapter Cards Grid -->
-                            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6">
-                                <!-- Chapter 1 Card -->
-                                <article class="group bg-white rounded-lg overflow-hidden flex flex-col h-full border border-gray-100 hover:border-primary/30 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
-                                    <a href="chapter1.html" class="block">
-                                        <div class="relative w-full overflow-hidden bg-sky-50">
-                                            <img src="Chapter_one_cover_page.jpeg" alt="Chapter 1 Cover" class="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"/>
-                                            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 z-10"></div>
-                                            <div class="absolute top-2 right-2 z-20">
-                                                <span class="px-2 py-0.5 rounded bg-white/95 text-primary text-[9px] uppercase font-bold tracking-wider shadow-sm backdrop-blur-sm">
-                                                    Complete
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="p-3 flex flex-col gap-2 grow">
-                                        <div>
-                                            <a href="chapter1.html" class="block">
-                                                <h3 class="text-sm font-bold text-text-main leading-tight group-hover:text-primary transition-colors">Think Before You Act</h3>
-                                            </a>
-                                            <p class="font-serif text-xs text-text-muted italic mt-1 line-clamp-2 leading-relaxed">
-                                                "Orca challenges Floofy to a race!"
-                                            </p>
-                                        </div>
-                                    </div>
-                                </article>
-
-                                <!-- Chapter 2 Card -->
-                                <article class="group bg-white rounded-lg overflow-hidden flex flex-col h-full border border-gray-100 hover:border-primary/30 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
-                                    <a href="chapter2.html" class="block">
-                                        <div class="relative w-full overflow-hidden bg-cyan-50">
-                                            <img src="Chapter_two_cover_page.jpeg" alt="Chapter 2 Cover" class="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"/>
-                                            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 z-10"></div>
-                                            <div class="absolute top-2 right-2 z-20">
-                                                <span class="px-2 py-0.5 rounded bg-primary text-white text-[9px] uppercase font-bold tracking-wider shadow-sm">
-                                                    New
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="p-3 flex flex-col gap-2 grow">
-                                        <div>
-                                            <a href="chapter2.html" class="block">
-                                                <h3 class="text-sm font-bold text-text-main leading-tight group-hover:text-primary transition-colors">Floofy's BIG Idea!!</h3>
-                                            </a>
-                                            <p class="font-serif text-xs text-text-muted italic mt-1 line-clamp-2 leading-relaxed">
-                                                "The Gem of the Sea is stolen!"
-                                            </p>
-                                        </div>
-                                    </div>
-                                </article>
-
-                                <!-- Coming Soon Card -->
-                                <article class="bg-white rounded-lg overflow-hidden flex flex-col h-full border border-gray-100 opacity-60">
-                                    <div class="relative w-full overflow-hidden bg-gradient-to-br from-gray-200 to-gray-300 py-16">
-                                        <div class="absolute top-2 right-2 z-20">
-                                            <span class="px-2 py-0.5 rounded bg-yellow-100 text-yellow-800 text-[9px] uppercase font-bold tracking-wider shadow-sm border border-yellow-200">
-                                                Soon
-                                            </span>
-                                        </div>
-                                        <div class="flex items-center justify-center">
-                                            <span class="material-symbols-outlined text-gray-400 text-[50px]">lock</span>
-                                        </div>
-                                    </div>
-                                    <div class="p-3 flex flex-col gap-2 grow">
-                                        <div>
-                                            <h3 class="text-sm font-bold text-gray-400 leading-tight">Chapter 3</h3>
-                                            <p class="font-serif text-xs text-gray-400 italic mt-1 line-clamp-2 leading-relaxed">
-                                                "Coming soon!"
-                                            </p>
-                                        </div>
-                                        <div class="mt-auto pt-2 flex flex-wrap gap-1">
-                                            <span class="px-1.5 py-0.5 bg-gray-100 text-gray-400 text-[10px] font-semibold rounded">???</span>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-                        </main>
-                    </div>
-                </div>
-            </section>
-
-            <!-- A Little Fire Story Section -->
-            <section class="bg-white/50 py-20 lg:py-32 px-6 lg:px-12 border-y border-black/5 stories-hidden" id="little-fire-story">
-                <div class="max-w-[700px] mx-auto">
-                    <div class="text-center mb-12">
-                        <h2 class="font-serif text-3xl font-bold text-text-main md:text-4xl mb-2">A Little Fire</h2>
-                        <p class="text-text-muted text-lg">By Adora Lin</p>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-8 md:p-12">
-                        <div class="prose prose-lg max-w-none font-serif text-text-main leading-relaxed">
-                            <p class="drop-cap text-lg md:text-xl leading-relaxed mb-6">
-                                In complete darkness, a small fire lit. This fire was hope, sparked in the middle of sadness and depression. The fire was alone, but he knew that being sad wasn't going to help, because if you wanted things to change, you can't just stand there and hope it happens, you've got to do something, and that's what this small lonely fire did.
-                            </p>
-
-                            <p class="text-lg md:text-xl leading-relaxed mb-6">
-                                He ventured into the depths, hoping to find a friend, but no one was there. But this little fire wasn't going to lose hope, as he knew that if you think positive, you can achieve anything. This fire, called Dawn, wasn't going to let the darkness push him down.
-                            </p>
-
-                            <p class="text-lg md:text-xl leading-relaxed mb-6">
-                                One unusually warm day, he saw another spark ignite. "Have I finally found a friend?" Dawn thought, and turns out, he did! The new spark started out small, but quickly grew larger in Dawn's presence. "Hello," Dawn started, not wanting to frighten this new spark. "I'm Dawn!" The spark jumped up and down, excited to be meeting someone. Dawn was also overjoyed, as he jumped up and down in return.
-                            </p>
-
-                            <p class="text-lg md:text-xl leading-relaxed mb-6">
-                                The new spark was eventually named Light. Light and Dawn became best friends, as there were no one else to be friends with. The world around them began to form, and they had found the first tree. It was like a miracle to them, but little did they know that trees would be all around!
-                            </p>
-
-                            <p class="text-lg md:text-xl leading-relaxed mb-6">
-                                As the next day came, Dawn was surprised to see a bunch of trees! Trees started spreading everywhere, and both Dawn and Light loved it. They had found a home, and this is where happiness began. They started making songs and dances, all of them telling how Dawn had begun in sadness, but soon filled the whole world with brightness, when there was supposed to be none.
-                            </p>
-
-                            <p class="text-lg md:text-xl leading-relaxed mb-6">
-                                Dawn had figured out one thing, that change doesn't come from nowhere, you've got to make things happen yourself, and he did exactly that, as he had found a friend, built a home, and was now as happy as could ever be. Dawn, the once lonely spark, was now thriving, and had achieved all his goals, this was because he never lost hope, and neither should you.
-                            </p>
-
-                            <p class="text-lg md:text-xl leading-relaxed text-primary font-semibold italic text-center mt-8 pt-8 border-t border-gray-200">
-                                This was a story of how a positive mindset and a little hope could change everything.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Characters Section -->
-            <section class="py-20 lg:py-32 px-6 lg:px-12 stories-hidden" id="characters">
-                <div class="mx-auto max-w-7xl">
-                    <div class="mb-12 text-center">
-                        <h2 class="font-serif text-3xl font-bold text-text-main md:text-4xl">Meet the Characters</h2>
-                        <p class="mt-4 text-text-muted text-lg max-w-2xl mx-auto">The wonderful friends who make every adventure special</p>
-                    </div>
-                    <div class="grid grid-cols-1 gap-12 md:grid-cols-2 max-w-4xl mx-auto">
-                        <!-- Floofy -->
-                        <div class="group bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-lg hover:border-primary/20 transition-all duration-300 text-center">
-                            <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-pink-100 to-pink-50 flex items-center justify-center p-4">
-                                <img src="Chapter1/Floofy_the_axolotl.png" alt="Floofy" class="w-full h-auto"/>
-                            </div>
-                            <h3 class="text-xl font-bold text-text-main">Floofy</h3>
-                            <p class="text-primary text-sm font-medium uppercase tracking-wider mt-1">The Hero</p>
-                            <p class="text-text-muted mt-4 text-sm leading-relaxed">A cheerful, kind-hearted axolotl who loves making friends and going on adventures. She's brave, curious, and always tries to help others!</p>
-                        </div>
-                        <!-- Popcorn -->
-                        <div class="group bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-lg hover:border-primary/20 transition-all duration-300 text-center">
-                            <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-orange-100 to-orange-50 flex items-center justify-center p-4">
-                                <img src="Chapter1/Popcorn_the_Lobster.png" alt="Popcorn" class="w-full h-auto"/>
-                            </div>
-                            <h3 class="text-xl font-bold text-text-main">Popcorn</h3>
-                            <p class="text-primary text-sm font-medium uppercase tracking-wider mt-1">Best Friend</p>
-                            <p class="text-text-muted mt-4 text-sm leading-relaxed">Floofy's best friend and loyal companion. He's always ready to help solve mysteries and go on exciting adventures together!</p>
                         </div>
                     </div>
                 </div>
@@ -406,14 +119,24 @@
 
             <!-- About Section -->
             <section class="bg-white/50 py-20 lg:py-32 px-6 lg:px-12 border-t border-black/5" id="about">
-                <div class="mx-auto max-w-4xl text-center">
+                <div class="mx-auto max-w-4xl">
+                    <div class="text-center mb-12">
                     <h2 class="font-serif text-3xl font-bold text-text-main md:text-4xl mb-6">About the Author</h2>
-                    <p class="text-text-muted text-lg leading-relaxed mb-8">
+                    </div>
+                    <div class="space-y-6 text-center">
+                        <p class="text-text-muted text-lg leading-relaxed md:text-xl">
                         Adora Lin is a young writer who loves creating stories about mystical worlds and fascinating characters. All of her stories are written with care and hope that they lighten up your day!
                     </p>
-                    <p class="text-text-muted text-lg leading-relaxed">
+                        <p class="text-text-muted text-lg leading-relaxed md:text-xl">
                         When she's not writing, you can find her drawing art, enjoying time with her sibling, and of course, dreaming up more stories!
                     </p>
+                    </div>
+                    <div class="flex justify-center mt-12">
+                        <a href="books.html" class="group flex items-center gap-2 text-primary font-bold hover:text-primary-light transition-colors">
+                            <span>View All Books</span>
+                            <span class="material-symbols-outlined text-xl transition-transform group-hover:translate-x-1">arrow_forward</span>
+                        </a>
+                    </div>
                 </div>
             </section>
         </main>
@@ -434,16 +157,20 @@
                     <div>
                         <h4 class="font-bold text-lg mb-6">Explore</h4>
                         <ul class="space-y-4">
-                            <li><a class="text-white/70 hover:text-white transition-colors" href="stories.html">All Stories</a></li>
-                            <li><a class="text-white/70 hover:text-white transition-colors" href="#characters">Characters</a></li>
+                            <li><a class="text-white/70 hover:text-white transition-colors" href="index.html">Home</a></li>
+                            <li><a class="text-white/70 hover:text-white transition-colors" href="books.html">Books</a></li>
                             <li><a class="text-white/70 hover:text-white transition-colors" href="#about">About Me</a></li>
                         </ul>
                     </div>
                     <div>
                         <h4 class="font-bold text-lg mb-6">Stories</h4>
                         <ul class="space-y-4">
-                            <li><a class="text-white/70 hover:text-white transition-colors" href="chapter1.html">Chapter 1: Think Before You Act</a></li>
-                            <li><a class="text-white/70 hover:text-white transition-colors" href="chapter2.html">Chapter 2: Floofy's BIG Idea!!</a></li>
+                            <li><a class="text-white/70 hover:text-white transition-colors" href="stories.html">Floofy the Axolotl</a></li>
+                            <li><a class="text-white/70 hover:text-white transition-colors" href="A_Little_Fire.html">A Little Fire</a></li>
+                            <li><a class="text-white/70 hover:text-white transition-colors flex items-center gap-1" href="racing_game.html">
+                                <span class="material-symbols-outlined text-[16px]">sports_esports</span>
+                                Racing Game
+                            </a></li>
                         </ul>
                     </div>
                 </div>
@@ -454,96 +181,5 @@
             </div>
         </footer>
     </div>
-
-    <script>
-        // Scroll reveal functionality
-        const observerOptions = {
-            threshold: 0.2,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observe the chapter cover trigger and A Little Fire cover
-        const chapterCover = document.getElementById('chapter-cover');
-        const littleFireCover = document.getElementById('little-fire-cover');
-        if (chapterCover) {
-            observer.observe(chapterCover);
-        }
-        if (littleFireCover) {
-            observer.observe(littleFireCover);
-        }
-
-        // Click handler to reveal stories - stays visible until page reload
-        const chapterCoverTrigger = document.getElementById('chapter-cover');
-        const storiesSection = document.getElementById('stories');
-
-        if (chapterCoverTrigger && storiesSection) {
-            chapterCoverTrigger.addEventListener('click', () => {
-                // Remove hidden class to show stories - stays visible until page reload
-                storiesSection.classList.remove('stories-hidden');
-                // Prevent the class from being re-added
-                storiesSection.style.display = '';
-                
-                // Smooth scroll to stories section
-                storiesSection.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            });
-        }
-
-        // Click handler to reveal A Little Fire story - stays visible until page reload
-        const littleFireCoverTrigger = document.getElementById('little-fire-cover');
-        const littleFireStorySection = document.getElementById('little-fire-story');
-
-        if (littleFireCoverTrigger && littleFireStorySection) {
-            littleFireCoverTrigger.addEventListener('click', () => {
-                // Remove hidden class to show A Little Fire story - stays visible until page reload
-                littleFireStorySection.classList.remove('stories-hidden');
-                // Prevent the class from being re-added
-                littleFireStorySection.style.display = '';
-                
-                // Smooth scroll to A Little Fire story section
-                littleFireStorySection.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            });
-        }
-
-        // Character toggle functionality
-        function toggleCharacter(name) {
-            const desc = document.getElementById(name + '-desc');
-            const arrow = document.getElementById(name + '-arrow');
-            
-            // Close all other descriptions first
-            ['floofy', 'popcorn'].forEach(char => {
-                if (char !== name) {
-                    const otherDesc = document.getElementById(char + '-desc');
-                    const otherArrow = document.getElementById(char + '-arrow');
-                    if (otherDesc) otherDesc.classList.add('hidden');
-                    if (otherArrow) otherArrow.style.transform = 'rotate(0deg)';
-                }
-            });
-            
-            // Toggle the clicked one
-            if (desc && arrow) {
-                desc.classList.toggle('hidden');
-                if (desc.classList.contains('hidden')) {
-                    arrow.style.transform = 'rotate(0deg)';
-                } else {
-                    arrow.style.transform = 'rotate(180deg)';
-                }
-            }
-        }
-    </script>
 </body>
 </html>
-

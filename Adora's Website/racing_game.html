@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floofy vs Orca: The Great Race | Adora Lin</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Epilogue', sans-serif;
+            background: linear-gradient(180deg, #e0f2fe 0%, #bae6fd 50%, #7dd3fc 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #0f172a;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: #0284c7;
+        }
+        
+        .back-btn {
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            color: #64748b;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .back-btn:hover {
+            background: #f8fafc;
+            color: #0284c7;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            gap: 1.5rem;
+        }
+        
+        .game-container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(14, 165, 233, 0.15);
+            max-width: 900px;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .game-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .game-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #0284c7;
+        }
+        
+        .game-header p {
+            font-size: 1.1rem;
+            color: #64748b;
+        }
+        
+        #gameCanvas {
+            border: 8px solid #e0f2fe;
+            border-radius: 16px;
+            display: block;
+            margin: 0 auto;
+            background: linear-gradient(180deg, #e0f2fe 0%, #bae6fd 100%);
+            box-shadow: inset 0 0 40px rgba(0,0,0,0.1);
+        }
+        
+        .progress-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 1rem auto 0;
+            background: #e0f2fe;
+            height: 12px;
+            border-radius: 6px;
+            position: relative;
+            overflow: visible;
+        }
+        
+        .progress-marker {
+            position: absolute;
+            top: -25px;
+            transform: translateX(-50%);
+            transition: left 0.1s linear;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .progress-marker img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
+        }
+        
+        .progress-marker::after {
+            content: '';
+            width: 2px;
+            height: 12px;
+            background: currentColor;
+            margin-top: 2px;
+        }
+        
+        .controls {
+            margin-top: 1.5rem;
+            text-align: center;
+            background: #f0f9ff;
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 1px solid #bae6fd;
+        }
+        
+        .controls h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #0284c7;
+        }
+        
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        
+        .key-hint {
+            display: inline-block;
+            background: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            border: 1px solid #cbd5e1;
+            font-weight: 700;
+            color: #475569;
+            margin-right: 0.5rem;
+            box-shadow: 0 2px 0 #cbd5e1;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            border: none;
+            padding: 1rem 3rem;
+            border-radius: 12px;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(2, 132, 199, 0.4);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 24px;
+            text-align: center;
+            max-width: 500px;
+            box-shadow: 0 20px 60px rgba(14, 165, 233, 0.2);
+            border: 1px solid #e0f2fe;
+        }
+        
+        .modal-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #0284c7;
+        }
+        
+        .result-message {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            font-weight: 600;
+            color: #334155;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <span class="material-symbols-outlined">waves</span>
+            <span>Floofy's Racing Adventure</span>
+        </a>
+        <a href="chapter1.html" class="back-btn">
+            <span class="material-symbols-outlined">arrow_back</span>
+            Back to Chapter 1
+        </a>
+    </header>
+    
+    <main>
+        <div class="game-container">
+            <div class="game-header">
+                <h1>🏁 The Great River Race 🏁</h1>
+                <p>Race against Orca! Dodge rocks and grab stars to win!</p>
+            </div>
+            
+            <div class="progress-container">
+                <div id="playerProgress" class="progress-marker" style="left: 0%; color: #ec4899;">
+                    <img src="Chapter1/Floofy_the_axolotl.png" alt="Floofy">
+                </div>
+                <div id="orcaProgress" class="progress-marker" style="left: 0%; color: #334155;">
+                    <img src="Chapter1/Orca_the_orca.png" alt="Orca">
+                </div>
+            </div>
+            
+            <canvas id="gameCanvas" width="800" height="500"></canvas>
+            
+            <div class="controls">
+                <h3>🎮 How to Play</h3>
+                <div class="controls-grid">
+                    <div>
+                        <p><span class="key-hint">⬆️</span> Move Up</p>
+                        <p><span class="key-hint">⬇️</span> Move Down</p>
+                    </div>
+                    <div>
+                        <p>⭐ <strong>Stars</strong> give you a speed boost!</p>
+                        <p>🪨 <strong>Rocks</strong> stun you for a moment!</p>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <button id="startBtn">Start Race</button>
+                    <button id="restartBtn" style="display: none;">Race Again</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <div class="modal" id="resultModal">
+        <div class="modal-content">
+            <h2 id="resultTitle">You Won!</h2>
+            <p class="result-message" id="resultMessage">Floofy is the fastest!</p>
+            <button onclick="restartGame()">Race Again!</button>
+            <br><br>
+            <a href="chapter1.html" class="back-btn" style="display: inline-flex; margin-top: 1rem;">Back to Chapter 1</a>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Game constants
+        const RACE_DISTANCE = 9000;
+        const BASE_SPEED = 5;
+        const BOOST_SPEED = 12;
+        const STUN_DURATION = 60;
+        const BOOST_DURATION = 120;
+        
+        // Game state
+        let gameRunning = false;
+        let frameCount = 0;
+        let globalSpeed = 5; // Speed of obstacles moving left
+        
+        // Load images
+        const images = {
+            floofy: new Image(),
+            orca: new Image(),
+            popcorn: new Image()
+        };
+        
+        images.floofy.src = 'Chapter1/Floofy_the_axolotl.png';
+        images.orca.src = 'Chapter1/Orca_the_orca.png';
+        images.popcorn.src = 'Chapter1/Popcorn_the_Lobster.png';
+        
+        // Racers
+        const player = {
+            x: 100,
+            y: 150,
+            width: 80,
+            height: 60,
+            distance: 0,
+            stunTimer: 0,
+            boostTimer: 0,
+            boostFlash: 0,
+            color: '#ec4899'
+        };
+        
+        const opponent = {
+            x: 100,
+            y: 380,
+            width: 90,
+            height: 70,
+            distance: 0,
+            stunTimer: 0,
+            boostTimer: 0,
+            boostFlash: 0,
+            color: '#334155',
+            targetY: 380
+        };
+        
+        // Game objects
+        let obstacles = [];
+        let boosts = [];
+        let bubbles = [];
+        
+        // Keyboard controls
+        const keys = {};
+        
+        document.addEventListener('keydown', (e) => {
+            keys[e.key] = true;
+        });
+        
+        document.addEventListener('keyup', (e) => {
+            keys[e.key] = false;
+        });
+        
+        // Start button
+        document.getElementById('startBtn').addEventListener('click', startGame);
+        document.getElementById('restartBtn').addEventListener('click', restartGame);
+        
+        function startGame() {
+            gameRunning = true;
+            frameCount = 0;
+            obstacles = [];
+            boosts = [];
+            bubbles = [];
+            
+            // Reset racers
+            player.distance = 0;
+            player.stunTimer = 0;
+            player.boostTimer = 0;
+            player.y = 150;
+            player.boostFlash = 0;
+            
+            opponent.distance = 0;
+            opponent.stunTimer = 0;
+            opponent.boostTimer = 0;
+            opponent.y = 380;
+            opponent.boostFlash = 0;
+            
+            document.getElementById('startBtn').style.display = 'none';
+            document.getElementById('restartBtn').style.display = 'none';
+            document.getElementById('resultModal').classList.remove('active');
+            
+            gameLoop();
+        }
+        
+        function restartGame() {
+            startGame();
+        }
+        
+        function gameLoop() {
+            if (!gameRunning) return;
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw ocean background effect
+            drawOcean();
+            drawFinishLine();
+            
+            // --- PLAYER LOGIC ---
+            if (player.stunTimer > 0) {
+                player.stunTimer--;
+            } else {
+                // Movement
+                if (keys['ArrowUp'] || keys['w'] || keys['W']) {
+                    player.y = Math.max(player.height / 2, player.y - 7);
+                }
+                if (keys['ArrowDown'] || keys['s'] || keys['S']) {
+                    player.y = Math.min(canvas.height - player.height / 2, player.y + 7);
+                }
+                
+                // Progress
+                let currentSpeed = player.boostTimer > 0 ? BOOST_SPEED : BASE_SPEED;
+                player.distance += currentSpeed;
+                if (player.boostTimer > 0) player.boostTimer--;
+                if (player.boostFlash > 0) player.boostFlash--;
+            }
+            
+            // --- OPPONENT AI LOGIC ---
+            if (opponent.stunTimer > 0) {
+                opponent.stunTimer--;
+            } else {
+                // AI Movement
+                // 1. Look for boosts
+                let target = null;
+                let minDist = 500;
+                
+                // Find nearest boost ahead
+                for (let b of boosts) {
+                    if (b.x > opponent.x && b.x < opponent.x + 400 && !b.collected) {
+                        let d = Math.abs(b.y - opponent.y);
+                        if (d < minDist) {
+                            minDist = d;
+                            target = b;
+                        }
+                    }
+                }
+                
+                // 2. Avoid rocks
+                let danger = null;
+                for (let o of obstacles) {
+                    if (o.x > opponent.x && o.x < opponent.x + 200) {
+                        if (Math.abs(o.y - opponent.y) < 60) {
+                            danger = o;
+                        }
+                    }
+                }
+                
+                if (danger) {
+                    // Move away from danger
+                    if (danger.y > opponent.y) opponent.targetY = Math.max(50, opponent.y - 100);
+                    else opponent.targetY = Math.min(canvas.height - 50, opponent.y + 100);
+                } else if (target) {
+                    // Move towards boost
+                    opponent.targetY = target.y;
+                } else {
+                    // Random wandering
+                    if (frameCount % 60 === 0) {
+                        opponent.targetY = Math.random() * (canvas.height - 100) + 50;
+                    }
+                }
+                
+                // Smooth movement
+                let dy = opponent.targetY - opponent.y;
+                opponent.y += dy * 0.05;
+                
+                // Progress (slightly slower than player max potential to make it fair but challenging)
+                let aiSpeed = opponent.boostTimer > 0 ? (BOOST_SPEED * 0.85) : (BASE_SPEED * 0.78);
+                opponent.distance += aiSpeed;
+                if (opponent.boostTimer > 0) opponent.boostTimer--;
+                if (opponent.boostFlash > 0) opponent.boostFlash--;
+            }
+            
+            // --- DRAW RACERS ---
+            updateRacerPositions();
+            drawRacer(player, images.floofy);
+            drawRacer(opponent, images.orca);
+            
+            // --- SPAWNERS ---
+            if (frameCount % 60 === 0) spawnObstacle();
+            if (frameCount % 120 === 0) spawnBoost();
+            if (frameCount % 10 === 0) spawnBubble();
+            
+            // --- UPDATES ---
+            updateBubbles();
+            updateObstacles();
+            updateBoosts();
+            
+            frameCount++;
+            
+            // --- UI UPDATES ---
+            updateProgressUI();
+            
+            // --- CHECK WIN ---
+            if (checkFinishTouch()) {
+                finishRace();
+            } else {
+                requestAnimationFrame(gameLoop);
+            }
+        }
+        
+        function drawOcean() {
+            // Animated water effect
+            const offset = (frameCount * 2) % 40;
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+            for (let i = 0; i < canvas.width; i += 40) {
+                ctx.fillRect(i - offset, 0, 2, canvas.height);
+            }
+
+            if (player.boostFlash > 0 || opponent.boostFlash > 0) {
+                ctx.fillStyle = 'rgba(251, 191, 36, 0.12)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }
+        }
+
+        function drawFinishLine() {
+            if (!isFinishVisible()) return;
+
+            const lineX = getFinishX();
+            const lineHeight = canvas.height;
+            const tileSize = 30;
+
+            // Checkered finish line
+            for (let y = 0; y < lineHeight; y += tileSize) {
+                ctx.fillStyle = (y / tileSize) % 2 === 0 ? '#ffffff' : '#0f172a';
+                ctx.fillRect(lineX, y, tileSize, tileSize);
+                ctx.fillStyle = (y / tileSize) % 2 === 0 ? '#0f172a' : '#ffffff';
+                ctx.fillRect(lineX + tileSize, y, tileSize, tileSize);
+            }
+
+            // Flag pole
+            ctx.fillStyle = '#0f172a';
+            ctx.fillRect(lineX - 10, 0, 6, 120);
+            ctx.fillStyle = '#ef4444';
+            ctx.beginPath();
+            ctx.moveTo(lineX - 4, 10);
+            ctx.lineTo(lineX - 4, 40);
+            ctx.lineTo(lineX + 18, 25);
+            ctx.closePath();
+            ctx.fill();
+
+            ctx.fillStyle = '#0f172a';
+            ctx.font = 'bold 16px "Epilogue", sans-serif';
+            ctx.fillText('FINISH', lineX - 10, 150);
+        }
+
+        function isFinishVisible() {
+            const leadDistance = Math.max(player.distance, opponent.distance);
+            return leadDistance >= RACE_DISTANCE * 0.92;
+        }
+
+        function getFinishX() {
+            const rightPadding = 70;
+            return canvas.width - rightPadding;
+        }
+
+        function updateRacerPositions() {
+            const leftPadding = 70;
+            const rightPadding = 70;
+            const trackWidth = canvas.width - leftPadding - rightPadding;
+            const playerProgress = Math.min(1, player.distance / RACE_DISTANCE);
+            const orcaProgress = Math.min(1, opponent.distance / RACE_DISTANCE);
+
+            player.x = leftPadding + (playerProgress * trackWidth);
+            opponent.x = leftPadding + (orcaProgress * trackWidth);
+        }
+
+        function checkFinishTouch() {
+            if (!isFinishVisible()) return false;
+            const finishX = getFinishX();
+            return (
+                player.x + player.width / 2 >= finishX ||
+                opponent.x + opponent.width / 2 >= finishX
+            );
+        }
+        
+        function drawRacer(racer, img) {
+            ctx.save();
+            ctx.translate(racer.x, racer.y);
+            
+            // Stun effect
+            if (racer.stunTimer > 0) {
+                ctx.globalAlpha = 0.5 + Math.sin(frameCount * 0.5) * 0.5;
+            }
+            
+            // Boost effect
+            if (racer.boostTimer > 0) {
+                ctx.shadowColor = '#fbbf24';
+                ctx.shadowBlur = 25;
+            }
+            
+            if (img.complete) {
+                ctx.drawImage(img, -racer.width/2, -racer.height/2, racer.width, racer.height);
+            } else {
+                ctx.fillStyle = racer.color;
+                ctx.fillRect(-racer.width/2, -racer.height/2, racer.width, racer.height);
+            }
+
+            // Boost trail
+            if (racer.boostTimer > 0) {
+                ctx.globalAlpha = 0.4;
+                ctx.fillStyle = '#fbbf24';
+                ctx.fillRect(-racer.width / 2 - 20, -5, 18, 10);
+                ctx.fillRect(-racer.width / 2 - 30, -18, 14, 8);
+                ctx.fillRect(-racer.width / 2 - 30, 10, 14, 8);
+                ctx.globalAlpha = 1;
+            }
+            
+            // Stun stars
+            if (racer.stunTimer > 0) {
+                ctx.fillStyle = 'yellow';
+                for(let i=0; i<3; i++) {
+                    let angle = (frameCount * 0.1) + (i * 2);
+                    ctx.beginPath();
+                    ctx.arc(Math.cos(angle) * 30, Math.sin(angle) * 20 - 20, 5, 0, Math.PI*2);
+                    ctx.fill();
+                }
+            }
+            
+            ctx.restore();
+        }
+        
+        function spawnObstacle() {
+            obstacles.push({
+                x: canvas.width,
+                y: Math.random() * (canvas.height - 100) + 50,
+                width: 50,
+                height: 50,
+                active: true
+            });
+        }
+        
+        function spawnBoost() {
+            boosts.push({
+                x: canvas.width,
+                y: Math.random() * (canvas.height - 100) + 50,
+                width: 40,
+                height: 40,
+                collected: false
+            });
+        }
+        
+        function spawnBubble() {
+            bubbles.push({
+                x: Math.random() * canvas.width,
+                y: canvas.height,
+                radius: Math.random() * 5 + 3,
+                speed: Math.random() * 2 + 1
+            });
+        }
+        
+        function updateBubbles() {
+            for (let i = bubbles.length - 1; i >= 0; i--) {
+                const bubble = bubbles[i];
+                bubble.y -= bubble.speed;
+                bubble.x += Math.sin(frameCount * 0.05 + i) * 0.5;
+                
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+                ctx.beginPath();
+                ctx.arc(bubble.x, bubble.y, bubble.radius, 0, Math.PI * 2);
+                ctx.fill();
+                
+                if (bubble.y < -10) bubbles.splice(i, 1);
+            }
+        }
+        
+        function updateObstacles() {
+            for (let i = obstacles.length - 1; i >= 0; i--) {
+                const obs = obstacles[i];
+                obs.x -= globalSpeed;
+                
+                // Draw Rock
+                ctx.fillStyle = '#64748b';
+                ctx.beginPath();
+                ctx.arc(obs.x, obs.y, obs.width/2, 0, Math.PI * 2);
+                ctx.fill();
+                // Rock detail
+                ctx.fillStyle = '#475569';
+                ctx.beginPath();
+                ctx.arc(obs.x - 5, obs.y - 5, 10, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Check Collisions
+                if (obs.active) {
+                    if (checkCollision(player, obs) && player.stunTimer === 0) {
+                        player.stunTimer = STUN_DURATION;
+                        obs.active = false; // Rock breaks
+                        createParticles(obs.x, obs.y, '#64748b');
+                    }
+                    if (checkCollision(opponent, obs) && opponent.stunTimer === 0) {
+                        opponent.stunTimer = STUN_DURATION;
+                        obs.active = false;
+                        createParticles(obs.x, obs.y, '#64748b');
+                    }
+                }
+                
+                if (obs.x < -obs.width) obstacles.splice(i, 1);
+            }
+        }
+        
+        function updateBoosts() {
+            for (let i = boosts.length - 1; i >= 0; i--) {
+                const boost = boosts[i];
+                boost.x -= globalSpeed;
+                
+                if (!boost.collected) {
+                    // Draw Star
+                    const rotation = frameCount * 0.1;
+                    ctx.save();
+                    ctx.translate(boost.x, boost.y);
+                    ctx.rotate(rotation);
+                    ctx.fillStyle = '#fbbf24';
+                    ctx.beginPath();
+                    for (let j = 0; j < 5; j++) {
+                        const angle = (j * 4 * Math.PI) / 5 - Math.PI / 2;
+                        const x = Math.cos(angle) * boost.width / 2;
+                        const y = Math.sin(angle) * boost.height / 2;
+                        if (j === 0) ctx.moveTo(x, y);
+                        else ctx.lineTo(x, y);
+                    }
+                    ctx.fill();
+                    ctx.restore();
+                    
+                    // Check Collisions
+                    if (checkCollision(player, boost)) {
+                        boost.collected = true;
+                        player.boostTimer = BOOST_DURATION;
+                        player.boostFlash = 12;
+                        createParticles(boost.x, boost.y, '#fbbf24');
+                    }
+                    if (checkCollision(opponent, boost)) {
+                        boost.collected = true;
+                        opponent.boostTimer = BOOST_DURATION;
+                        opponent.boostFlash = 12;
+                        createParticles(boost.x, boost.y, '#fbbf24');
+                    }
+                }
+                
+                if (boost.x < -boost.width) boosts.splice(i, 1);
+            }
+        }
+        
+        function checkCollision(obj1, obj2) {
+            const dx = obj1.x - obj2.x;
+            const dy = obj1.y - obj2.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            return distance < (obj1.width + obj2.width) / 2.5;
+        }
+        
+        function createParticles(x, y, color) {
+            for (let i = 0; i < 8; i++) {
+                const angle = (i / 8) * Math.PI * 2;
+                ctx.fillStyle = color;
+                ctx.beginPath();
+                ctx.arc(x + Math.cos(angle)*20, y + Math.sin(angle)*20, 4, 0, Math.PI*2);
+                ctx.fill();
+            }
+        }
+        
+        function updateProgressUI() {
+            const playerPct = Math.min(100, (player.distance / RACE_DISTANCE) * 100);
+            const orcaPct = Math.min(100, (opponent.distance / RACE_DISTANCE) * 100);
+            
+            document.getElementById('playerProgress').style.left = playerPct + '%';
+            document.getElementById('orcaProgress').style.left = orcaPct + '%';
+        }
+        
+        function finishRace() {
+            gameRunning = false;
+            const modal = document.getElementById('resultModal');
+            const title = document.getElementById('resultTitle');
+            const msg = document.getElementById('resultMessage');
+            
+            modal.classList.add('active');
+            document.getElementById('restartBtn').style.display = 'inline-block';
+            
+            if (player.distance >= RACE_DISTANCE && player.distance > opponent.distance) {
+                title.textContent = "🏆 You Won! 🏆";
+                title.style.color = "#ec4899";
+                msg.textContent = "Floofy beat Orca to the finish line!";
+            } else {
+                title.textContent = "🥈 Close Race!";
+                title.style.color = "#334155";
+                msg.textContent = "Orca won this time. Try again!";
+            }
+        }
+        
+        // Initial Screen
+        ctx.fillStyle = '#0284c7';
+        ctx.font = 'bold 30px "Epilogue", sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Press "Start Race" to begin!', canvas.width/2, canvas.height/2);
+    </script>
+</body>
+</html>
