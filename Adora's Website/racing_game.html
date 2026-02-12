@@ -527,8 +527,9 @@
             updateProgressUI();
             
             // --- CHECK WIN ---
-            if (checkFinishTouch()) {
-                finishRace();
+            const winner = checkFinishTouch();
+            if (winner) {
+                finishRace(winner);
             } else {
                 requestAnimationFrame(gameLoop);
             }
@@ -601,12 +602,22 @@
         }
 
         function checkFinishTouch() {
-            if (!isFinishVisible()) return false;
+            if (!isFinishVisible()) return null;
             const finishX = getFinishX();
-            return (
-                player.x + player.width / 2 >= finishX ||
-                opponent.x + opponent.width / 2 >= finishX
-            );
+            
+            const playerTouched = player.x + player.width / 2 >= finishX;
+            const orcaTouched = opponent.x + opponent.width / 2 >= finishX;
+            
+            if (playerTouched && orcaTouched) {
+                // Both touched at same frame, check who has more x position
+                return player.x > opponent.x ? 'player' : 'opponent';
+            } else if (playerTouched) {
+                return 'player';
+            } else if (orcaTouched) {
+                return 'opponent';
+            }
+            
+            return null;
         }
         
         function drawRacer(racer, img) {
@@ -800,7 +811,7 @@
             document.getElementById('orcaProgress').style.left = orcaPct + '%';
         }
         
-        function finishRace() {
+        function finishRace(winner) {
             gameRunning = false;
             const modal = document.getElementById('resultModal');
             const title = document.getElementById('resultTitle');
@@ -809,7 +820,7 @@
             modal.classList.add('active');
             document.getElementById('restartBtn').style.display = 'inline-block';
             
-            if (player.distance >= RACE_DISTANCE && player.distance > opponent.distance) {
+            if (winner === 'player') {
                 title.textContent = "🏆 You Won! 🏆";
                 title.style.color = "#ec4899";
                 msg.textContent = "Floofy beat Orca to the finish line!";
