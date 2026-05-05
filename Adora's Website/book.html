@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Floofy the Axolotl - Book Details</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2e5b6b",
+                        "primary-dark": "#234653",
+                        "background-light": "#fbfaf9",
+                        "background-dark": "#21242c",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#2c303b",
+                        "text-main": "#131516",
+                        "text-muted": "#6c7a7f",
+                    },
+                    fontFamily: {
+                        "display": ["Epilogue", "sans-serif"]
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(46, 91, 107, 0.1)',
+                        'lift': '0 10px 40px -10px rgba(0, 0, 0, 0.1)',
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body { font-family: 'Epilogue', sans-serif; }
+        .chapter-row:hover .chapter-arrow {
+            transform: translateX(4px);
+            opacity: 1;
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 20px; }
+    </style>
+</head>
+<body class="bg-background-light text-text-main transition-colors duration-200">
+    <div class="flex flex-col min-h-screen">
+        <!-- Navigation -->
+        <header class="sticky top-0 z-50 w-full bg-background-light/90 backdrop-blur-md border-b border-[#f1f3f3]">
+            <div class="px-6 md:px-12 py-4 flex items-center justify-between max-w-7xl mx-auto">
+                <div class="flex items-center gap-8">
+                    <a class="flex items-center gap-3 text-text-main group" href="index.html">
+                        <div class="w-8 h-8 flex items-center justify-center bg-primary rounded-lg text-white">
+                            <span class="material-symbols-outlined text-[20px]">menu_book</span>
+                        </div>
+                        <h2 class="text-lg font-bold tracking-tight group-hover:text-primary transition-colors">Adora Lin</h2>
+                    </a>
+                    <nav class="hidden md:flex items-center gap-8">
+                        <a class="text-text-muted text-sm font-medium hover:text-primary transition-colors" href="index.html">Home</a>
+                        <a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="stories.html">Stories</a>
+                        <a class="text-text-muted text-sm font-medium hover:text-primary transition-colors" href="index.html#about">About</a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-grow w-full max-w-7xl mx-auto px-6 md:px-12 py-8 md:py-12">
+            <!-- Breadcrumbs -->
+            <nav class="flex items-center gap-2 mb-8 text-sm text-text-muted">
+                <a class="hover:text-primary transition-colors" href="stories.html">Stories</a>
+                <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+                <span class="text-primary font-medium">Floofy the Axolotl</span>
+            </nav>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 xl:gap-20">
+                <!-- Left Column: Book Cover -->
+                <div class="lg:col-span-4 xl:col-span-3">
+                    <div class="sticky top-28 space-y-6">
+                        <!-- Book Cover -->
+                        <div class="relative w-full max-w-[220px] mx-auto rounded-r-xl rounded-l-sm shadow-lift overflow-hidden bg-sky-50">
+                            <div class="absolute left-0 top-0 bottom-0 w-[6px] bg-gradient-to-r from-gray-800/20 to-transparent z-20 pointer-events-none"></div>
+                            <img src="Chapter_one_cover_page.jpeg" alt="Floofy the Axolotl Book Cover" class="w-full h-auto object-contain"/>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="flex flex-col gap-3">
+                            <a href="chapter1.html" class="w-full h-14 bg-primary hover:bg-primary-dark text-white rounded-xl font-semibold text-lg shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all flex items-center justify-center gap-3 group">
+                                <span class="material-symbols-outlined group-hover:animate-pulse">auto_stories</span>
+                                Start Reading
+                            </a>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button class="h-12 bg-white border border-gray-200 hover:border-primary/50 text-text-main rounded-xl font-medium text-sm transition-colors flex items-center justify-center gap-2">
+                                    <span class="material-symbols-outlined text-primary">bookmark_add</span>
+                                    Save
+                                </button>
+                                <button class="h-12 bg-white border border-gray-200 hover:border-primary/50 text-text-main rounded-xl font-medium text-sm transition-colors flex items-center justify-center gap-2">
+                                    <span class="material-symbols-outlined text-text-muted">share</span>
+                                    Share
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Details & Chapters -->
+                <div class="lg:col-span-8 xl:col-span-9 flex flex-col gap-8">
+                    <!-- Header -->
+                    <div class="space-y-6">
+                        <div class="space-y-2">
+                            <h1 class="text-5xl font-black tracking-tight text-text-main leading-[1.1]">Floofy the Axolotl</h1>
+                            <p class="text-xl text-text-muted font-light">Adventures of friendship and teamwork beneath the waves</p>
+                        </div>
+                        
+                        <!-- Stats -->
+                        <div class="flex flex-wrap gap-6 py-6 border-y border-gray-100">
+                            <div class="flex items-center gap-3">
+                                <div class="p-2 rounded-full bg-orange-50 text-orange-600">
+                                    <span class="material-symbols-outlined text-[20px]">history_edu</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-xs text-text-muted uppercase tracking-wider font-semibold">Status</span>
+                                    <span class="text-sm font-medium">Ongoing</span>
+                                </div>
+                            </div>
+                            <div class="w-px h-10 bg-gray-100"></div>
+                            <div class="flex items-center gap-3">
+                                <div class="p-2 rounded-full bg-blue-50 text-blue-600">
+                                    <span class="material-symbols-outlined text-[20px]">bar_chart</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-xs text-text-muted uppercase tracking-wider font-semibold">Chapters</span>
+                                    <span class="text-sm font-medium">2 Published</span>
+                                </div>
+                            </div>
+                            <div class="w-px h-10 bg-gray-100"></div>
+                            <div class="flex items-center gap-3">
+                                <div class="p-2 rounded-full bg-purple-50 text-purple-600">
+                                    <span class="material-symbols-outlined text-[20px]">category</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-xs text-text-muted uppercase tracking-wider font-semibold">Genre</span>
+                                    <span class="text-sm font-medium">Adventure / Fantasy</span>
+                                </div>
+                            </div>
+                            <div class="w-px h-10 bg-gray-100"></div>
+                            <div class="flex items-center gap-3">
+                                <div class="p-2 rounded-full bg-green-50 text-green-600">
+                                    <span class="material-symbols-outlined text-[20px]">update</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-xs text-text-muted uppercase tracking-wider font-semibold">Updated</span>
+                                    <span class="text-sm font-medium">Jan 2026</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Synopsis -->
+                    <section>
+                        <h3 class="text-lg font-bold text-text-main mb-4 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">description</span>
+                            Synopsis
+                        </h3>
+                        <div class="prose max-w-none text-text-muted text-lg leading-relaxed font-light">
+                            <p class="mb-4">
+                                Meet Floofy, a brave and kind pink axolotl who lives in the beautiful underwater world! Together with her best friend Popcorn the Lobster and friendly rival Orca, Floofy goes on exciting adventures.
+                            </p>
+                            <p>
+                                From racing through rivers to solving mysteries at the underwater palace, Floofy learns that true friendship means helping others—even when it means putting aside your own goals. Join Floofy and her friends as they discover that working together is the greatest adventure of all!
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- Characters -->
+                    <section>
+                        <h3 class="text-lg font-bold text-text-main mb-4 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">group</span>
+                            Main Characters
+                        </h3>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="bg-white rounded-xl p-4 border border-gray-100 text-center hover:shadow-soft transition-shadow">
+                                <img src="Chapter1/Floofy_the_axolotl.png" alt="Floofy" class="w-16 h-auto mx-auto mb-3"/>
+                                <h4 class="font-bold text-sm">Floofy</h4>
+                                <p class="text-xs text-text-muted">The Hero</p>
+                            </div>
+                            <div class="bg-white rounded-xl p-4 border border-gray-100 text-center hover:shadow-soft transition-shadow">
+                                <img src="Chapter1/Orca_the_orca.png" alt="Orca" class="w-16 h-auto mx-auto mb-3"/>
+                                <h4 class="font-bold text-sm">Orca</h4>
+                                <p class="text-xs text-text-muted">The Challenger</p>
+                            </div>
+                            <div class="bg-white rounded-xl p-4 border border-gray-100 text-center hover:shadow-soft transition-shadow">
+                                <img src="Chapter1/Popcorn_the_Lobster.png" alt="Popcorn" class="w-16 h-auto mx-auto mb-3"/>
+                                <h4 class="font-bold text-sm">Popcorn</h4>
+                                <p class="text-xs text-text-muted">Best Friend</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Chapter Index -->
+                    <section class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-xl font-bold text-text-main flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary">list_alt</span>
+                                Chapter Index
+                            </h3>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <!-- Chapter 1 -->
+                            <a class="chapter-row group flex items-center justify-between p-4 rounded-xl hover:bg-background-light transition-all border border-transparent hover:border-primary/10" href="chapter1.html">
+                                <div class="flex items-center gap-4 md:gap-6">
+                                    <span class="flex-shrink-0 w-10 h-10 rounded-full bg-[#f1f3f3] flex items-center justify-center text-text-muted font-bold text-sm group-hover:bg-primary group-hover:text-white transition-colors">
+                                        01
+                                    </span>
+                                    <div class="flex flex-col">
+                                        <span class="text-base font-bold text-text-main group-hover:text-primary transition-colors">Think Before You Act</span>
+                                        <span class="text-xs text-text-muted mt-1">Floofy learns that preparation and thinking ahead saves the day</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-6">
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-700 uppercase tracking-wide">Complete</span>
+                                    <span class="material-symbols-outlined text-gray-300 chapter-arrow opacity-0 transition-all duration-300">arrow_forward</span>
+                                </div>
+                            </a>
+                            
+                            <!-- Chapter 2 -->
+                            <a class="chapter-row group flex items-center justify-between p-4 rounded-xl hover:bg-background-light transition-all border border-transparent hover:border-primary/10" href="chapter2.html">
+                                <div class="flex items-center gap-4 md:gap-6">
+                                    <span class="flex-shrink-0 w-10 h-10 rounded-full bg-[#f1f3f3] flex items-center justify-center text-text-muted font-bold text-sm group-hover:bg-primary group-hover:text-white transition-colors">
+                                        02
+                                    </span>
+                                    <div class="flex flex-col">
+                                        <span class="text-base font-bold text-text-main group-hover:text-primary transition-colors">Floofy's BIG Idea!!</span>
+                                        <span class="text-xs text-text-muted mt-1">Floofy and Popcorn solve a mystery and help a new friend</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-6">
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-primary/10 text-primary uppercase tracking-wide">New</span>
+                                    <span class="material-symbols-outlined text-gray-300 chapter-arrow opacity-0 transition-all duration-300">arrow_forward</span>
+                                </div>
+                            </a>
+                            
+                            <!-- Chapter 3 (Coming Soon) -->
+                            <div class="flex items-center justify-between p-4 rounded-xl opacity-60 cursor-not-allowed">
+                                <div class="flex items-center gap-4 md:gap-6">
+                                    <span class="flex-shrink-0 w-10 h-10 rounded-full border-2 border-dashed border-gray-300 flex items-center justify-center text-text-muted font-bold text-sm">
+                                        03
+                                    </span>
+                                    <div class="flex flex-col">
+                                        <span class="text-base font-medium text-text-muted italic">Coming Soon...</span>
+                                        <span class="text-xs text-text-muted mt-1">A new adventure is being written</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-6">
+                                    <span class="material-symbols-outlined text-gray-300">lock</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="mt-auto py-12 bg-white border-t border-gray-100">
+            <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-sm text-text-muted">© 2026 Adora Love Lin. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a class="text-text-muted hover:text-primary transition-colors" href="index.html">Home</a>
+                    <a class="text-text-muted hover:text-primary transition-colors" href="stories.html">Stories</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
+
