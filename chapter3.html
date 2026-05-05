@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Chapter 3: Freedom at Pearl Aquarium - Floofy the Axolotl</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2e5b6b",
+                        "background-light": "#fbfaf9",
+                        "background-dark": "#21242c",
+                        "paper-light": "#ffffff",
+                        "paper-dark": "#2a2d36",
+                        "text-main": "#21242c",
+                        "text-muted": "#6c7a7f",
+                    },
+                    fontFamily: {
+                        "display": ["Epilogue", "sans-serif"],
+                        "serif": ["Merriweather", "serif"],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 20px; }
+        html { scroll-behavior: smooth; }
+        .scene-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .scene-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.2); }
+        .drop-cap::first-letter {
+            font-size: 4rem; line-height: 0.8; float: left; margin-right: 0.75rem; margin-top: 0.2rem;
+            font-weight: 700; color: #2e5b6b; font-family: 'Playfair Display', serif;
+        }
+        .mode-btn { transition: all 0.3s ease; }
+        .mode-btn.active { background-color: #2e5b6b; color: white; }
+        .story-mode { transition: opacity 0.3s ease; }
+        .dialogue { color: #2e5b6b; font-style: italic; }
+        .thought { color: #6c7a7f; font-style: italic; }
+    </style>
+</head>
+<body class="bg-background-light text-text-main antialiased font-display min-h-screen flex flex-col transition-colors duration-300">
+    <div class="fixed top-0 left-0 w-full h-1.5 z-50 bg-gray-200">
+        <div id="progress-bar" class="h-full bg-primary w-[0%] transition-all duration-300 ease-out shadow-[0_0_10px_rgba(46,91,107,0.5)]"></div>
+    </div>
+
+    <header class="sticky top-0 z-40 w-full backdrop-blur-sm bg-background-light/90 border-b border-black/5 transition-all duration-300">
+        <div class="max-w-[1200px] mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <a class="group flex items-center gap-2 text-text-main hover:text-primary transition-colors" href="stories.html">
+                <span class="material-symbols-outlined text-[20px] group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                <span class="text-sm font-bold tracking-wide">Back to Stories</span>
+            </a>
+            <div class="flex items-center gap-3">
+                <div class="flex bg-white border border-gray-200 rounded-full p-1 shadow-sm">
+                    <button type="button" onclick="setMode('text')" id="text-mode-btn" class="mode-btn px-4 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-[16px]">article</span> Text
+                    </button>
+                    <button type="button" onclick="setMode('comic')" id="comic-mode-btn" class="mode-btn active px-4 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-[16px]">photo_library</span> Comic
+                    </button>
+                </div>
+                <div id="font-controls" class="hidden items-center gap-1 bg-white border border-gray-200 rounded-full px-2 py-1 shadow-sm">
+                    <button type="button" onclick="decreaseFont()" class="p-2 text-text-muted hover:text-primary transition-colors rounded-full hover:bg-gray-100" title="Decrease font size">
+                        <span class="material-symbols-outlined text-[20px]">text_decrease</span>
+                    </button>
+                    <span id="font-size-display" class="text-xs font-bold text-text-muted px-2">100%</span>
+                    <button type="button" onclick="increaseFont()" class="p-2 text-text-muted hover:text-primary transition-colors rounded-full hover:bg-gray-100" title="Increase font size">
+                        <span class="material-symbols-outlined text-[20px]">text_increase</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow flex justify-center py-12 px-4 sm:px-6">
+        <article class="w-full max-w-[900px] bg-paper-light rounded-xl shadow-[0_4px_24px_-12px_rgba(0,0,0,0.1)] border border-gray-100 overflow-hidden">
+            <div class="relative h-64 md:h-80 overflow-hidden">
+                <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter3/Cover_Page_.png" alt="Chapter 3 Cover" class="w-full h-full object-cover"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
+                    <span class="text-primary-light bg-primary/80 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Chapter 3</span>
+                    <h1 class="font-display font-black text-4xl md:text-5xl tracking-tight mt-4">Freedom at Pearl Aquarium</h1>
+                    <p class="text-white/80 text-lg mt-2 font-serif italic">A daring rescue and a sanctuary for everyone</p>
+                </div>
+            </div>
+
+            <div id="text-mode" class="story-mode hidden px-8 sm:px-12 md:px-20 py-12">
+                <div id="text-content" class="prose prose-lg max-w-none font-serif text-text-main leading-[2] text-lg">
+                    <p class="drop-cap mb-8">Floofy, Popcorn, and their new friend, Silver, snuck into Pearl Aquarium, ensuring that they made no noise whatsoever. When they crept up to the entrance, they saw the first guard, whom they nicknamed the lazy guard because he was always sleeping. Floofy started to tiptoe around him, not noticing the bump in the ground. Suddenly, she tripped! Facefirst in the sand she landed. Fortunately, the fall didn’t hurt, but it made a loud BANG! Miraculously, the guard didn’t wake up. <span class="thought">Wow,</span> Floofy thought, <span class="thought">he’s so used to sleeping that he didn’t even notice that?</span> They snuck in successfully but couldn't find Seal! In the room across them, Seal was swimming around frantically, trying to find the way out but with no luck. After swimming three laps, she finally noticed the others. <span class="dialogue">"Help me! I’m over here!"</span> She wailed. Silver, Floofy, and Popcorn finally noticed her. Floofy and Popcorn stared at her in awe: her white skin glittered like pearls and exactly six gray whiskers on each side matched perfectly, although she had one black whisker on the left. <span class="dialogue">"Silver,"</span> she asked, <span class="dialogue">"who are those creatures looking at me as if I’m a weirdo?"</span> Silver explained, <span class="dialogue">"they’re here to bust you out of this nasty aquarium."</span> Floofy and Popcorn introduced themselves. In the middle of the introductions, Seal asked, <span class="dialogue">"Very nice meeting you all, but can somebody quickly get me out? It smells like rotten fish here!"</span></p>
+                    <p class="mb-6">The three quickly got to work. Popcorn stood guard while Floofy and Silver determined how to get Seal out. <span class="dialogue">"There’s no lock anywhere,"</span> Floofy noticed. Silver started panicking. <span class="dialogue">"Then how do we get her out? What if we never get her out? Or what if we get caught? Oh no! Then I’ll never be able to open that seaweed shop I dreamed of!"</span> Then, Floofy thought of a brilliant idea! <span class="dialogue">"What if we find a hammer or a tool that can smash through glass, and then Seal is free! We might flood the aquarium, but it doesn’t matter. While we’re at it, let’s just bust every creature out!"</span></p>
+                    <p class="mb-6"><span class="dialogue">"I know somewhere we can find those tools!"</span> Squealed Seal, <span class="dialogue">"It’s in the storage room, but be careful, they have a guard with a whip in there. But when he does notice you guys, let him try to crack that whip. He might even slap himself in the face! You guys should make noise when you get to the storage room, so you can watch the most hilarious incident of all time!"</span> Ignoring Seal, they put Floofy’s plan in action, heading in the direction of the storage room. There, too, stood a guard, a huge oaf tall as a giant, his face covered in scraggly white-gray whiskers, and he was also sleeping! Floofy snuck quietly in and picked up the hammer, but she heard a loud SNORE behind her. She was so surprised, she jumped up and dropped the hammer! It landed with a loud CLANG on the ground. The sleeping guard awakened! <span class="dialogue">"Hey, you little pests, get out of here before I slap you with this whip!"</span> He raised his whip, and Floofy was about to duck, but she remembered Seal’s words: When he does notice you, just let him crack the whip. She stood still as the guard tried to hit her but ended up tripping over himself! <span class="dialogue">"Quick!"</span> Floofy shouted to Silver and Popcorn, <span class="dialogue">"Let’s go! This is our chance—we have to hurry!"</span> Floofy grabbed the hammer and sprinted across the aquarium, swimming as fast as her legs could swim.</p>
+                    <p class="mb-6">When she finally made it, she was exhausted. She handed the hammer to Silver. The wall of glass through which he threw it broke into a gazillion splinters flying everywhere. Water went everywhere, too, but the aquarium was nowhere close to flooding. <span class="dialogue">"I’m free!"</span> Seal exclaimed. <span class="dialogue">"Now I can finally punch those aquarium guys in the nose!"</span> Silver and Seal got to work, Silver hammering the hammer into every cage, while Seal used her tail to give a good thwack to whichever guard she could find. Water was everywhere, but it wasn’t deep.</p>
+                    <p class="mb-6">Soon, Silver had freed every animal in the aquarium—all kinds of creatures: jellyfish, octopus, piranha, even sharks! Floofy led them to the entrance and told everyone to go Queen Octopus’s palace where they would meet and talk about their situation, a quite complicated situation because they were once criminals, and when they got banished to the aquarium, their houses were taken down and replaced, so they didn’t have a place to live. When they made it to the palace, Floofy and Popcorn returned the gem and gave back the urchin’s pearl. Queen Octopus led all of the once-criminal creatures into her private space and decided that her construction builders were to build a sanctuary for those who didn’t have a home at present and other homeless creatures who never had one in the first place. While they were building it, the former criminals searched for family members to live with. After a month or so, the building of the sanctuary finished, they had a grand opening to celebrate the return of the gem and the opening of the sanctuary.</p>
+                    <p class="mb-6">News spread fast about the new place, and homeless creatures from all around the ocean came to live. Inside the sanctuary, a restaurant had an unlimited supply of food, so no one had to cook or starve, each creature getting their own room and key. It was basically a large apartment, but with many creatures in it. Floofy, so happy to see this new apartment in which everybody she knew could live, arranged a party inside the sanctuary to celebrate once more. As for Silver and Seal, they opened a shop inside the apartment and ran it together. It was a shop that sold various different kinds of seaweed. Floofy and Popcorn visited it occasionally to brighten up their gardens, which usually had nothing but dying plants and dust in them. Seal and Silver always thought of new names for the plants—such as sad seaweed or blinding blue. The one that Seal liked the most was the kind of seaweed she called Sarcasm because she could annoy and argue with it all the time. Silver liked the ageless seaweed, a new type of seaweed. You could put it in a corner of your room, leave it there for one year, and it still would look as good as new.</p>
+                    <p class="mb-6">The new creatures in the sanctuary also began to build new lives—Shark, once a fierce criminal who could swim so fast he was a blur, found a new job as a doctor! Floofy and Popcorn were so delighted to see the whole community now working together. Popcorn had another case to solve, so Floofy went back to the cottage, a little disappointed that her adventure had come to an end, but little did she know, she was wrong. For ahead, unbeknownst to her, adventures galore awaited her discovery!</p>
+                </div>
+                <div class="text-center py-12 border-t border-gray-100 mt-12">
+                    <span class="material-symbols-outlined text-primary text-4xl mb-4">auto_awesome</span>
+                    <p class="font-serif text-2xl text-primary italic">The End of Chapter Three</p>
+                    <p class="text-text-muted mt-4">Continue to Chapter 4 for Floofy’s next mystery.</p>
+                </div>
+            </div>
+
+            <div id="comic-mode" class="story-mode px-8 sm:px-16 py-12 space-y-12">
+                <!-- Scene 1 -->
+                <section class="story-scene">
+                    <div class="scene-card bg-gradient-to-br from-cyan-50 to-white rounded-2xl overflow-hidden shadow-lg">
+                        <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter3/Scene_1.png" alt="Scene 1" class="w-full h-64 md:h-80 object-cover"/>
+                        <div class="p-8">
+                            <p class="text-lg md:text-xl font-serif leading-relaxed text-text-main">
+                                They sneak to the Pearl Aquarium, but Floofy falls!
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Scene 2 -->
+                <section class="story-scene">
+                    <div class="scene-card bg-gradient-to-br from-teal-50 to-white rounded-2xl overflow-hidden shadow-lg">
+                        <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter3/Scene_2.png" alt="Scene 2" class="w-full h-64 md:h-80 object-cover"/>
+                        <div class="p-8">
+                            <p class="text-lg md:text-xl font-serif leading-relaxed text-text-main">
+                                They find their friend Seal trapped in a tank.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Scene 3 -->
+                <section class="story-scene">
+                    <div class="scene-card bg-gradient-to-br from-blue-50 to-white rounded-2xl overflow-hidden shadow-lg">
+                        <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter3/Scene_3.png" alt="Scene 3" class="w-full h-64 md:h-80 object-cover"/>
+                        <div class="p-8">
+                            <p class="text-lg md:text-xl font-serif leading-relaxed text-text-main">
+                                When stealthily grabbing tools, the guard wakes up with a whip!
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Scene 4 -->
+                <section class="story-scene">
+                    <div class="scene-card bg-gradient-to-br from-emerald-50 to-white rounded-2xl overflow-hidden shadow-lg">
+                        <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter3/Scene_4.png" alt="Scene 4" class="w-full h-64 md:h-80 object-cover"/>
+                        <div class="p-8">
+                            <p class="text-lg md:text-xl font-serif leading-relaxed text-text-main">
+                                Floofy uses the hammer and rescues every animal in the aquarium.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Scene 5 -->
+                <section class="story-scene">
+                    <div class="scene-card bg-gradient-to-br from-lime-50 to-white rounded-2xl overflow-hidden shadow-lg">
+                        <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter3/Scene_5.png" alt="Scene 5" class="w-full h-64 md:h-80 object-cover"/>
+                        <div class="p-8">
+                            <p class="text-lg md:text-xl font-serif leading-relaxed text-text-main">
+                                Celebration!
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <div class="text-center py-12 border-t border-gray-100">
+                    <span class="material-symbols-outlined text-primary text-4xl mb-4">auto_awesome</span>
+                    <p class="font-serif text-2xl text-primary italic">The End of Chapter Three</p>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 border-t border-gray-100 p-8 sm:px-16">
+                <div class="flex flex-col sm:flex-row justify-between items-center gap-6">
+                    <a class="group flex flex-col items-start gap-1 w-full sm:w-auto text-left hover:bg-gray-100 p-4 rounded-lg transition-colors" href="chapter2.html">
+                        <div class="flex items-center text-text-muted text-sm font-bold uppercase tracking-wider group-hover:text-primary transition-colors">
+                            <span class="material-symbols-outlined text-[16px] mr-1">arrow_back</span> Previous Chapter
+                        </div>
+                        <span class="text-lg font-display font-semibold text-text-main">Floofy's BIG Idea!!</span>
+                    </a>
+                    <a class="group flex flex-col items-end gap-1 w-full sm:w-auto text-right bg-primary text-white p-4 rounded-lg shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-300" href="chapter4.html">
+                        <div class="flex items-center text-white/80 text-sm font-bold uppercase tracking-wider">Next Chapter <span class="material-symbols-outlined text-[16px] ml-1">arrow_forward</span></div>
+                        <span class="text-lg font-display font-semibold text-white">The Case That Stumped Popcorn</span>
+                    </a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="py-8 text-center text-text-muted text-sm font-display">
+        <p>© 2026 Adora Love Lin. All rights reserved.</p>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            document.getElementById('progress-bar').style.width = (scrollTop / docHeight) * 100 + '%';
+        });
+        let currentFontSize = 100;
+        function increaseFont() {
+            currentFontSize = Math.min(200, currentFontSize + 10);
+            document.getElementById('text-content').style.fontSize = currentFontSize + '%';
+            document.getElementById('font-size-display').textContent = currentFontSize + '%';
+        }
+        function decreaseFont() {
+            currentFontSize = Math.max(70, currentFontSize - 10);
+            document.getElementById('text-content').style.fontSize = currentFontSize + '%';
+            document.getElementById('font-size-display').textContent = currentFontSize + '%';
+        }
+        function setMode(mode) {
+            const textMode = document.getElementById('text-mode');
+            const comicMode = document.getElementById('comic-mode');
+            const textBtn = document.getElementById('text-mode-btn');
+            const comicBtn = document.getElementById('comic-mode-btn');
+            const fontControls = document.getElementById('font-controls');
+            if (mode === 'text') {
+                textMode.classList.remove('hidden');
+                comicMode.classList.add('hidden');
+                textBtn.classList.add('active');
+                comicBtn.classList.remove('active');
+                fontControls.classList.remove('hidden');
+                fontControls.classList.add('flex');
+            } else {
+                textMode.classList.add('hidden');
+                comicMode.classList.remove('hidden');
+                textBtn.classList.remove('active');
+                comicBtn.classList.add('active');
+                fontControls.classList.add('hidden');
+                fontControls.classList.remove('flex');
+            }
+            localStorage.setItem('readingMode', mode);
+            window.scrollTo({ top: 300, behavior: 'smooth' });
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            setMode(localStorage.getItem('readingMode') || 'comic');
+        });
+    </script>
+</body>
+</html>

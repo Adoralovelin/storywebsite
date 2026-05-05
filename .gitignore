@@ -1,0 +1,24 @@
+# Local image/video backups (live site uses Supabase Storage)
+/media-local/
+
+# Image assets (hosted on Supabase; do not commit binaries)
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.svg
+*.ico
+*.bmp
+*.PNG
+*.JPG
+*.JPEG
+
+# Video
+*.mp4
+*.mov
+*.avi
+
+# System files
+.DS_Store
+Thumbs.db

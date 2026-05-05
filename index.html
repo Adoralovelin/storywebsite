@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Adora Lin | Writer Portfolio</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2e5b6b",
+                        "primary-light": "#3d7a8c",
+                        "background-light": "#fbfaf9",
+                        "background-dark": "#21242c",
+                        "text-main": "#131516",
+                        "text-muted": "#6c7a7f",
+                    },
+                    fontFamily: {
+                        "display": ["Epilogue", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f3f3;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-background-light font-display text-text-main antialiased selection:bg-primary/20 selection:text-primary relative">
+    <!-- Grain Overlay -->
+    <div class="fixed inset-0 pointer-events-none z-0 bg-[url('data:image/svg+xml,%3Csvg width=\'100\' height=\'100\' viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'3\' opacity=\'0.5\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'0.03\'/%3E%3C/svg%3E')] mix-blend-multiply opacity-50"></div>
+    
+    <div class="relative z-10 flex min-h-screen w-full flex-col overflow-x-hidden">
+        <!-- Navigation -->
+        <header class="sticky top-0 z-50 w-full border-b border-black/5 bg-background-light/90 backdrop-blur-md transition-all duration-300">
+            <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-12">
+                <a href="index.html" class="flex items-center gap-3 group cursor-pointer">
+                    <span class="material-symbols-outlined text-primary text-3xl group-hover:rotate-12 transition-transform duration-300">history_edu</span>
+                    <span class="font-serif text-2xl font-bold tracking-tight text-text-main">Adora Lin</span>
+                </a>
+                <nav class="hidden md:flex items-center gap-10">
+                    <a class="text-sm font-medium text-primary border-b-2 border-primary pb-0.5" href="index.html">Home</a>
+                    <a class="text-sm font-medium text-text-main/70 hover:text-primary transition-colors" href="books.html">Books</a>
+                    <a class="text-sm font-medium text-text-main/70 hover:text-primary transition-colors" href="#about">About</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <button class="md:hidden p-2 text-text-main">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-grow">
+            <!-- Hero Section -->
+            <section class="relative px-6 py-24 lg:px-12 lg:py-32 2xl:py-40 min-h-[80vh] flex items-center">
+                <div class="mx-auto max-w-7xl w-full">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                        <!-- Left: Text Content -->
+                        <div class="flex flex-col gap-8">
+                            <div class="space-y-6">
+                                <span class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">
+                                    <span class="h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+                                    Young Writer
+                                </span>
+                                <h1 class="font-serif text-5xl font-medium leading-[1.1] tracking-tight text-text-main sm:text-6xl xl:text-7xl">
+                                    Creating magical worlds where <span class="italic text-primary">friendship</span> conquers all.
+                                </h1>
+                                <p class="text-lg leading-relaxed text-text-muted md:text-xl">
+                                    Adora Lin is a young writer who loves creating stories about mystical worlds and fascinating characters. All of her stories are written with care and hope that they lighten up your day!
+                                </p>
+                            </div>
+                            <div class="flex flex-wrap gap-4 pt-4">
+                                <a href="books.html" class="group flex h-14 items-center gap-2 rounded-lg bg-text-main px-8 text-base font-bold text-white transition-all hover:bg-black active:scale-95 shadow-lg hover:shadow-xl">
+                                    <span>Explore My Books</span>
+                                    <span class="material-symbols-outlined text-xl transition-transform group-hover:translate-x-1">arrow_forward</span>
+                                </a>
+                                <a href="#about" class="flex h-14 items-center justify-center rounded-lg border border-black/10 bg-transparent px-8 text-base font-bold text-text-main transition-colors hover:bg-black/5 hover:border-black/20">
+                                    About Me
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Right: Photo -->
+                        <div class="flex justify-center lg:justify-end">
+                            <div class="relative w-full max-w-sm">
+                                <div class="relative overflow-hidden rounded-2xl shadow-2xl">
+                                    <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/myphoto.JPG" alt="Adora Lin" class="w-full h-auto object-cover"/>
+                                </div>
+                                <!-- Decorative elements -->
+                                <div class="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl -z-10"></div>
+                                <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-primary/5 rounded-full blur-3xl -z-10"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section class="bg-white/50 py-20 lg:py-32 px-6 lg:px-12 border-t border-black/5" id="about">
+                <div class="mx-auto max-w-4xl">
+                    <div class="text-center mb-12">
+                    <h2 class="font-serif text-3xl font-bold text-text-main md:text-4xl mb-6">About the Author</h2>
+                    </div>
+                    <div class="space-y-6 text-center">
+                        <p class="text-text-muted text-lg leading-relaxed md:text-xl">
+                        Adora Lin is a young writer who loves creating stories about mystical worlds and fascinating characters. All of her stories are written with care and hope that they lighten up your day!
+                    </p>
+                        <p class="text-text-muted text-lg leading-relaxed md:text-xl">
+                        When she's not writing, you can find her drawing art, enjoying time with her sibling, and of course, dreaming up more stories!
+                    </p>
+                    </div>
+                    <div class="flex justify-center mt-12">
+                        <a href="books.html" class="group flex items-center gap-2 text-primary font-bold hover:text-primary-light transition-colors">
+                            <span>View All Books</span>
+                            <span class="material-symbols-outlined text-xl transition-transform group-hover:translate-x-1">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-primary text-white py-16 px-6 lg:px-12 mt-auto">
+            <div class="mx-auto max-w-7xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                    <div class="col-span-1 lg:col-span-2">
+                        <div class="flex items-center gap-2 mb-6">
+                            <span class="material-symbols-outlined text-2xl">history_edu</span>
+                            <span class="font-serif text-2xl font-bold">Adora Lin</span>
+                        </div>
+                        <p class="max-w-sm text-white/80 leading-relaxed">
+                            Creating magical stories that bridge the gap between imagination and reality. Thanks for reading!
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-6">Explore</h4>
+                        <ul class="space-y-4">
+                            <li><a class="text-white/70 hover:text-white transition-colors" href="index.html">Home</a></li>
+                            <li><a class="text-white/70 hover:text-white transition-colors" href="books.html">Books</a></li>
+                            <li><a class="text-white/70 hover:text-white transition-colors" href="#about">About Me</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-6">Stories</h4>
+                        <ul class="space-y-4">
+                            <li><a class="text-white/70 hover:text-white transition-colors" href="stories.html">Floofy the Axolotl</a></li>
+                            <li><a class="text-white/70 hover:text-white transition-colors" href="A_Little_Fire.html">A Little Fire</a></li>
+                            <li><a class="text-white/70 hover:text-white transition-colors" href="The_Deer_Incident.html">The Deer Incident</a></li>
+                            <li><a class="text-white/70 hover:text-white transition-colors" href="Why_The_Moon_Is_White.html">Why the Moon is White</a></li>
+                            <li><a class="text-white/70 hover:text-white transition-colors flex items-center gap-1" href="racing_game.html">
+                                <span class="material-symbols-outlined text-[16px]">sports_esports</span>
+                                Racing Game
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/50">
+                    <p>© 2026 Adora Love Lin. All rights reserved.</p>
+                    <p>Made with ♥ by Adora Love Lin</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Chapter 4: The Case That Stumped Popcorn - Floofy the Axolotl</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2e5b6b",
+                        "background-light": "#fbfaf9",
+                        "background-dark": "#21242c",
+                        "paper-light": "#ffffff",
+                        "paper-dark": "#2a2d36",
+                        "text-main": "#21242c",
+                        "text-muted": "#6c7a7f",
+                    },
+                    fontFamily: {
+                        "display": ["Epilogue", "sans-serif"],
+                        "serif": ["Merriweather", "serif"],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 20px; }
+        html { scroll-behavior: smooth; }
+        .scene-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .scene-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.2); }
+        .drop-cap::first-letter {
+            font-size: 4rem; line-height: 0.8; float: left; margin-right: 0.75rem; margin-top: 0.2rem;
+            font-weight: 700; color: #2e5b6b; font-family: 'Playfair Display', serif;
+        }
+        .mode-btn { transition: all 0.3s ease; }
+        .mode-btn.active { background-color: #2e5b6b; color: white; }
+        .story-mode { transition: opacity 0.3s ease; }
+        .dialogue { color: #2e5b6b; font-style: italic; }
+        .thought { color: #6c7a7f; font-style: italic; }
+    </style>
+</head>
+<body class="bg-background-light text-text-main antialiased font-display min-h-screen flex flex-col transition-colors duration-300">
+    <div class="fixed top-0 left-0 w-full h-1.5 z-50 bg-gray-200">
+        <div id="progress-bar" class="h-full bg-primary w-[0%] transition-all duration-300 ease-out shadow-[0_0_10px_rgba(46,91,107,0.5)]"></div>
+    </div>
+
+    <header class="sticky top-0 z-40 w-full backdrop-blur-sm bg-background-light/90 border-b border-black/5 transition-all duration-300">
+        <div class="max-w-[1200px] mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <a class="group flex items-center gap-2 text-text-main hover:text-primary transition-colors" href="stories.html">
+                <span class="material-symbols-outlined text-[20px] group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                <span class="text-sm font-bold tracking-wide">Back to Stories</span>
+            </a>
+            <div class="flex items-center gap-3">
+                <div class="flex bg-white border border-gray-200 rounded-full p-1 shadow-sm">
+                    <button type="button" onclick="setMode('text')" id="text-mode-btn" class="mode-btn px-4 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-[16px]">article</span> Text
+                    </button>
+                    <button type="button" onclick="setMode('comic')" id="comic-mode-btn" class="mode-btn active px-4 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-[16px]">photo_library</span> Comic
+                    </button>
+                </div>
+                <div id="font-controls" class="hidden items-center gap-1 bg-white border border-gray-200 rounded-full px-2 py-1 shadow-sm">
+                    <button type="button" onclick="decreaseFont()" class="p-2 text-text-muted hover:text-primary transition-colors rounded-full hover:bg-gray-100" title="Decrease font size">
+                        <span class="material-symbols-outlined text-[20px]">text_decrease</span>
+                    </button>
+                    <span id="font-size-display" class="text-xs font-bold text-text-muted px-2">100%</span>
+                    <button type="button" onclick="increaseFont()" class="p-2 text-text-muted hover:text-primary transition-colors rounded-full hover:bg-gray-100" title="Increase font size">
+                        <span class="material-symbols-outlined text-[20px]">text_increase</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow flex justify-center py-12 px-4 sm:px-6">
+        <article class="w-full max-w-[900px] bg-paper-light rounded-xl shadow-[0_4px_24px_-12px_rgba(0,0,0,0.1)] border border-gray-100 overflow-hidden">
+            <div class="relative h-64 md:h-80 overflow-hidden">
+                <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter4/Cover_Page_Chapter4.png" alt="Chapter 4 Cover" class="w-full h-full object-cover"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
+                    <span class="text-primary-light bg-primary/80 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Chapter 4</span>
+                    <h1 class="font-display font-black text-4xl md:text-5xl tracking-tight mt-4">The Case That Stumped Popcorn</h1>
+                    <p class="text-white/80 text-lg mt-2 font-serif italic">Silver and Seal go missing, and nothing adds up</p>
+                </div>
+            </div>
+
+            <div id="text-mode" class="story-mode hidden px-8 sm:px-12 md:px-20 py-12">
+                <div id="text-content" class="prose prose-lg max-w-none font-serif text-text-main leading-[2] text-lg">
+                    <p class="drop-cap mb-8">BANG! Floofy woke with a start, her heart pounding. She sprung out of bed and ran down the stairs to the bottom floor. Thankfully, no one was there but Popcorn!</p>
+                    <p class="mb-6"><span class="dialogue">"Popcorn, what are you doing here so early in the morning?!"</span> Floofy grumbled, pinching her arm to stay awake.</p>
+                    <p class="mb-6">The lobster quickly turned around from what he was doing and stumbled, <span class="dialogue">"I-I’m not doing thingany!"</span> He paused, contemplating what he had just said. <span class="dialogue">"I mean, I’m not doing anything. I was, um, getting butter for my buttered popcorn!"</span> He plastered on a nervous smile. When Floofy didn’t say anything, he admitted that he was getting sugar. Glancing at Popcorn, Floofy then burst out laughing.</p>
+                    <p class="mb-6"><span class="dialogue">"Wh-why didn’t you just say so?!"</span> Floofy wheezed, trying her best not to start laughing again. Popcorn explained that he knew Floofy used her sugar to make her candies and sweet treats, and he thought that if he took the sugar she would be mad.</p>
+                    <p class="mb-6"><span class="thought">Typical Popcorn,</span> Floofy thought, rolling her eyes and sighing inwardly, <span class="thought">always worrying.</span> Floofy opened the cupboard, took her whole jar of sugar, and thrusted it to Popcorn, who was gaping at her as if she had just grown horns and wings.</p>
+                    <p class="mb-6"><span class="dialogue">"Say, why do you need the sugar anyway?"</span> Floofy asked, trying to conceal that she thought Popcorn was looking fairly funny by pretending to sneeze every time a snort escaped her nose. Popcorn didn’t reply directly. He did tell her that sugar was not the only reason he came to her house. He said there was a mystery that he couldn’t solve. Floofy couldn’t believe her ears. How did anything stump Popcorn? He was the master detective, either he solved the mystery or solved the mystery. It seemed that was no longer the case! Floofy decided she had to know what had stumped Popcorn because he was not easily fooled.</p>
+                    <p class="mb-6"><span class="dialogue">"I don’t know how to explain this to you, but… Seal and Silver…,"</span> Popcorn whispered. Floofy nodded, wanting to hear it. <span class="dialogue">"They’re missing!"</span> He exclaimed. Floofy gasped. What?! No! That's not true! You’re joking! She wanted to tell him, but if it was coming from Popcorn, he wasn’t joking. Another part of Floofy was irritated, even furious, that he didn’t tell her sooner. Popcorn explained that he went to the shop early in the morning to buy some ageless seaweed, but as he entered the shop, he saw that it had been completely ransacked, Seal and Silver were gone, and no traces were there to be noticed by even the most skillful of sleuths. Floofy thought quickly. There had to be at least some clues. Maybe Popcorn didn’t look hard enough, or he was looking for the wrong thing? They headed towards the seaweed shop, located just outside the new sanctuary. Floofy rushed in, praying that everything would be normal and that Popcorn was just joking. Unfortunately, he was not.</p>
+                    <p class="mb-6">Everything was out of place: the shivering silence, the pots of seaweed on the floor, and the absence of Seal and Silver. <span class="thought">Calm down,</span> Floofy thought to herself, <span class="thought">we’ll find them in no time!</span> That did nothing but make her feel worse. She heard a clatter in the back of the shop. <span class="thought">Phew,</span> Floofy thought in relief, <span class="thought">Popcorn was probably just freaking out because it does seem that they are, in fact, missing. But look! They’re right there in the back.</span> Floofy opened the door, only to find clown fish! He was short, his fancy moustache curled at the end, his wiry silver spectacles smart-looking, his badge arrogantly shiny, and looked very authorized. Floofy, a little intimidated, stared, unsure of what to do. Ask him who he was? Maybe he knew where her friends were! But then why would he be here? Floofy finally settled on, <span class="dialogue">"Um, sir, who are you and why are you here?"</span></p>
+                    <p class="mb-6">Clearing throat, he replied, <span class="dialogue">"Madam, I am Lawyer Phillip Harp, here in search of the two fellows who went missing this morning."</span></p>
+                    <p class="mb-6"><span class="dialogue">"Philli-, I mean, Lawyer Phillip, you don’t know where Silver and Seal are?"</span> An anxious voice called from behind Floofy, who jumped but in a flash remembered that Popcorn was still there and listening. She had forgotten about him in the midst of thinking Silver and Seal were in the back and instead finding the lawyer.</p>
+                    <p class="mb-6"><span class="dialogue">"No, I’m afraid not,"</span> the lawyer replied sorrowfully. <span class="dialogue">"We will send search parties in an attempt to find them though, so you mustn't worry much,"</span> he added, returning to his search for whatever it was he was seeking. He let out a gasp of satisfaction when he picked up what looked like a shell, showing it with pride to Popcorn and Floofy. When they looked at the shell in confusion, he explained that the shell was Silver’s family heirloom and that it was worth a lot of money. Tradition held that it was to be passed down from generation to generation and the money used only when the time was right.</p>
+                    <p class="mb-6"><span class="dialogue">"So… you think the time is right now?"</span> Popcorn inquired, still puzzled at the reason the lawyer needed it so much.</p>
+                    <p class="mb-6"><span class="dialogue">"No!"</span> The clown fish replied, exasperated. <span class="dialogue">"This is so I can pass it down, if we never find Silver or Seal! We would pass it down to Silver’s nephew, or niece."</span> The determined Floofy didn’t give up. She wouldn’t let it go without trying. Popcorn understood immediately what she meant when she explained it to him and looked for a clue, anything that would at least hint at their missing friends’ whereabouts.</p>
+                    <p class="mb-6"><span class="dialogue">"Oh!"</span> Popcorn exclaimed suddenly. <span class="dialogue">"There's a tiny white hair here!"</span> What? Floofy thought with surprise, there’s no sea creature I know that has fur. Oh wait, there’s otters, seals and sea lions. It seemed that Popcorn had the same idea as he was frowning at a pot that looked like an otter nearby.</p>
+                    <p class="mb-6"><span class="dialogue">"Are you… thinking what I’m thinking?"</span> Popcorn asked, glancing at her. As Floofy nodded, she ran through the names of all the otters, seals, and sea lions she knew. Her number one suspect was an otter named Mr. Shelby. He was always up to something, and Floofy suspected that somehow he and the disappearance of Silver and Seal were connected.</p>
+                    <p class="mb-6">Floofy was thinking fast. If it wasn’t him, then who would be my second suspect? She thought of the sea lion Mrs. Runga, with her kind smile and twinkling eyes. It couldn’t be her, right? Unless her kindness and encouraging personality were just masks to disguise her true self? Floofy, frowning as she thought of all the possibilities, almost didn’t hear Popcorn talking to her.</p>
+                    <p class="mb-6"><span class="dialogue">"See, I think it could be a land animal,"</span> he paused, squinting and blinking his eyes as if he had something stuck in them. <span class="dialogue">"But that’s not likely because land animals don’t usually swim this deep. It’s probably because they can’t breathe underwater, and they would drown if they even tried to get down here."</span> Floofy weighed the likelihood of it being a land animal, deciding that it was extremely unlikely. Unless the land animals had found technology that would help them breathe underwater, it was very unlikely.</p>
+                    <p class="mb-6"><span class="dialogue">"Let’s head back and discuss,"</span> Popcorn suggested, clicking his claws thoughtfully. <span class="dialogue">"I, and I think you, too, need time to think this matter over."</span> Although Floofy wanted to find Silver and Seal immediately, she had to agree with Popcorn. They couldn’t just go rampaging off without any lead! Reluctantly, Floofy agreed. Sitting down, Floofy started thinking rapidly. The first step is to… perhaps get a lead and follow it? She thought harder. But, how? There’s nothing we can do, except asking creatures directly, which will be too blunt and won’t work. The kidnapper or thief won’t just reveal themselves! But Floofy thought it was worth a try, so she and Popcorn had waded deep into their conversation when the door suddenly creaked.</p>
+                    <p class="mb-6">What the- Floofy started, quizzically glancing at the door.</p>
+                    <p class="mb-6"><span class="dialogue">"Hello?"</span> She called out, suspicion and hope sprouting at the same time. Was this the thief? Or did they have some answers? As Floofy opened the door, she discovered a pink octopus named Bloo. Her face had anxious written all over it, so Floofy ushered her in. As the scorching fire fought with the frosty air that had managed to swiftly enter the house, Bloo began talking.</p>
+                    <p class="mb-6"><span class="dialogue">"Hey, I heard that Silver and Seal were missing,"</span> Bloo started, <span class="dialogue">"but, I think I have some answers!"</span> Floofy leaned over the piece of waterproof-parchment she was holding. It was a diagram, a very precise and calculative one, that is, covered in weird symbols, numbers, and Bloo’s scratchy handwriting.</p>
+                    <p class="mb-6"><span class="dialogue">"So,"</span> Bloo explained. <span class="dialogue">"The main thing here is I know who took Silver and Seal an—."</span> She was cut off very abruptly by the sound of crunching.</p>
+                    <p class="mb-6"><span class="dialogue">"Popcorn!"</span> Floofy scolded. <span class="dialogue">"This is not a time to eat snacks!! We are literally SO CLOSE!"</span> Popcorn dipped his head in apology but kept on munching. After Floofy continued glaring at him with a look that said "don’t test me," he innocently said, <span class="dialogue">"What? It’s my nervous habit!"</span></p>
+                    <p class="mb-6">Bloo cleared her throat. <span class="dialogue">"So… are we still on the case?"</span></p>
+                    <p class="mb-6"><span class="dialogue">"Yes, yep, ready!"</span> Floofy replied, turning her attention back to the paper. Bloo explained how she found out who it was—using Morse code—and Bloo, with her exceptional hearing skills, had heard and deciphered it.</p>
+                    <p class="mb-6"><span class="dialogue">"The message was: L-O-R-A-N-G-E  I-S  T-F, which means Lorange is the thief, or TF, in this case."</span> Floofy, relieved that it wasn’t Mrs. Runga, wondered who this Lorange creature was anyways? Bloo, as if sensing her thoughts, said, <span class="dialogue">"Lorange is a squid, if you’re wondering."</span> Wait a minute, Floofy thought, scouring her memories for that name, Lorange… Orange! Floofy gasped aloud.</p>
+                    <p class="mb-6"><span class="dialogue">"Wha- what is it?"</span> Popcorn inquired, his eyes widening, for Floofy would not gasp like that if it wasn’t for something important. <span class="dialogue">"Lorange! Orange! Orange is, or was, my childhood best friend! He added an “L” to the start of his name, classic Orange."</span> Popcorn almost dropped his bag of chips. Floofy’s head was whirling. Orange… Did he do this on purpose? Feeling a sudden wave of rage, Floofy knew that they now had somewhere solid to start looking, so they set out immediately.</p>
+                    <p class="mb-6">The first problem they faced was the question of where to find Orange. Floofy had informed them that he liked to travel around, so he could be anywhere! They had decided to split up, Bloo looking around and listening, Floofy and Popcorn going to Orange’s house, not far from Floofy’s house. When they got there, nobody was home, as expected, but there was a silver scale.</p>
+                    <p class="mb-6"><span class="dialogue">"Popcorn?"</span> Floofy mumbled, too lost examining the scale. He came over. <span class="dialogue">"Look, do you think this is one of Silver’s scales?"</span> Popcorn looked at it carefully, comparing every spec of silver to Silver’s luminescent scales, his eyes calculating.</p>
+                    <p class="mb-6"><span class="dialogue">"It’s a match!"</span> He announced with surprise. Floofy was even more puzzled. Why would Silver come here and then go missing? After departing from Orange’s home, they had uncovered one more clue; a ticket to Watergalaxy, the water park known ocean-wide for its special currents, ones that made you feel as if you were floating in outer space. Floofy had decided to sneak into Watergalaxy as it was the only thing she could think of.</p>
+                    <p class="mb-6">As soon as they arrived, Popcorn wanted to ride the Seaweed Rollercoaster, one that hurled strands of stinky slimy seaweed at rider-victims. As Popcorn kept pleading and Floofy kept refusing, Bloo, looking around, spotted a tint of silver! She hurried, following it, Floofy and Popcorn struggling to keep up. When Bloo finally caught the tail of the silver sea creature, it turned around and…</p>
+                    <p class="mb-6">Floofy gasped, <span class="dialogue">"SILVER?! WERE YOU HERE THE WHOLE TIME?! AND YOU DIDN’T THINK TO TELL US?!"</span> Floofy gushed. Several heads turned towards the commotion. But Floofy found that as soon as she started yelling, she couldn’t stop. <span class="dialogue">"WE WERE SO WORRIED! SERIOUSLY, DO YOU HAVE ANY IDEA WHAT WE WERE DOING TO FIND YOU?!"</span></p>
+                    <p class="mb-6">When she stopped for a breath, Seal’s head popped out behind Silver. <span class="dialogue">"Hey, what’s all the yelling about? We swear we didn’t budge in front of you!"</span> She zipped her lips when she saw Floofy’s fuming face and quickly explained that Orange was their friend, too, and that he had offered to take them to Watergalaxy, as an anniversary of five years of friendship.</p>
+                    <p class="mb-6"><span class="dialogue">"Then what was the Morse code message about?"</span> Bloo inquired, pushing her glasses up.</p>
+                    <p class="mb-6"><span class="dialogue">"Oh… I think I messed up…,"</span> Seal exclaimed, avoiding Floofy’s gaze. <span class="dialogue">"But Morse code is so confusing!! How do you expect me to remember all those lines and dots?! Stupid form of language!"</span> She huffed.</p>
+                    <p class="mb-6"><span class="dialogue">"Um, actually, it’s quite eas—,"</span> blurted Bloo, dramatically interrupted by Seal, her sigh exasperated, her eyes rolling so hard Floofy thought they were going to spin out of their sockets. Orange, or Lorange, appeared from behind Popcorn and exclaimed rather loudly, <span class="dialogue">"I’m really sorry for not telling you guys!"</span> Consequently, Floofy jumped up in surprise, her fury intensifying. <span class="dialogue">"I think, um, you need a refresher…,"</span> nervously laughed Bloo, while she ushered Floofy to a soda machine.</p>
+                    <p class="mb-6">As Bloo walked her tentacles back over to the group, glancing over anxiously as she did so, Floofy took a moment to calm down and think. Her mind wandered off to the quandary of why she freaked out like that when Silver and Seal went "missing." She thought of what Silver had said, that the store looked ransacked because he accidentally misplaced his notebook—one that kept him organized—right before leaving for Watergalaxy. He had also explained the "Lorange" was the nickname Seal and he had given Orange. Floofy took one swift glance at the clock and jumped. The reason she stood there, thinking about her panic for five minutes straight escaped her, but she did know she was heading back to the group.</p>
+                    <p class="mb-6">After an hour of shock, fun, and anger (we’re looking at you, Floofy!) Floofy and her friends headed back to their humble abodes to rest because of the long day they’d had and the long day they’d have tomorrow. Floofy awoke the next day to the sound of clattering. Ugh, for the sake of sugar, who is here?! She was still grumbling under her breath, drowsily rubbing her eyes, when she discovered that, again, Popcorn had appeared and was fidgeting at the dinner table as Floofy came down.</p>
+                    <p class="mb-6"><span class="dialogue">"What is it now, Popcorn?"</span> Floofy asked impatiently, expecting to be bombarded by another of Popcorn’s endless worries—drips from a leaky tap. But Popcorn didn’t reply. He just glanced over at the front door, Floofy following his gaze. She heard commotion outside where thousands of news reporters were scurrying to their door. Floofy was baffled by the number of them! What was the reason? She guessed it was the return of Seal and Silver, so carefully placing her fingers on the icy doorknob, she twisted and…</p>
+                    <p class="mb-6"><span class="dialogue">"OOMPH!"</span> Floofy yelped in mild surprise as a wave of creatures came rushing and tumbling towards her. Her ears ringing as questions exploded onto her, Popcorn rolling away from the giant commotion, Floofy raised her hands to silence the noise. Wanting to make a good impression, she questioned calmly, <span class="dialogue">"why are you all here?"</span> A news reporter stepped forward.</p>
+                    <p class="mb-6"><span class="dialogue">"Pretty sure we all know that Silver and Seal are great friends with you,"</span> he said, looking around, as if daring someone to correct him, <span class="dialogue">"and they have mysteriously returned, and we want to know the reason—we need you to fill in the blanks."</span> Floofy sighed the smallest sigh she thought possible, a tiny huff of air, and tried to satisfactorily answer the hundreds of questions thrown at her by these creatures at her cottage door.</p>
+                    <p class="mb-6">As the horde of reporters left, Floofy sank into her couch, rubbing her eyes, thinking she could see stars. The night sky colossally serene, Floofy wondered if chaos was bound to come for it was never calm in that tiny tank house of hers, as she knew that calm wasn’t compatible with creatures like Floofy and her friends. What she didn’t know was that her hypothesis was right.</p>
+                </div>
+                <div class="text-center py-12 border-t border-gray-100 mt-12">
+                    <span class="material-symbols-outlined text-primary text-4xl mb-4">auto_awesome</span>
+                    <p class="font-serif text-2xl text-primary italic">The End of Chapter Four</p>
+                    <p class="text-text-muted mt-4">More adventures are on the way.</p>
+                </div>
+            </div>
+
+            <div id="comic-mode" class="story-mode px-8 sm:px-16 py-12 space-y-12">
+                <section class="story-scene">
+                    <div class="scene-card bg-gradient-to-br from-rose-50 to-white rounded-2xl overflow-hidden shadow-lg">
+                        <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter4/Scene_1.png" alt="Scene 1" class="w-full h-64 md:h-80 object-cover"/>
+                        <div class="p-8">
+                            <p class="text-lg md:text-xl font-serif leading-relaxed text-text-main">Floofy wakes to a bang, finds Popcorn at her house, and after a silly mix-up about sugar learns that Silver and Seal are missing.</p>
+                        </div>
+                    </div>
+                </section>
+                <section class="story-scene">
+                    <div class="scene-card bg-gradient-to-br from-slate-50 to-white rounded-2xl overflow-hidden shadow-lg">
+                        <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter4/Scene_2.png" alt="Scene 2" class="w-full h-64 md:h-80 object-cover"/>
+                        <div class="p-8">
+                            <p class="text-lg md:text-xl font-serif leading-relaxed text-text-main">At the ransacked seaweed shop they meet Lawyer Phillip Harp, hunt for clues, and spot a strange white hair that sends their minds spinning toward suspects.</p>
+                        </div>
+                    </div>
+                </section>
+                <section class="story-scene">
+                    <div class="scene-card bg-gradient-to-br from-violet-50 to-white rounded-2xl overflow-hidden shadow-lg">
+                        <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter4/Scene_3.png" alt="Scene 3" class="w-full h-64 md:h-80 object-cover"/>
+                        <div class="p-8">
+                            <p class="text-lg md:text-xl font-serif leading-relaxed text-text-main">Bloo arrives with a Morse code breakthrough about Lorange, and Floofy realizes it is her old friend Orange, while a scale at his home and a ticket to Watergalaxy point the way.</p>
+                        </div>
+                    </div>
+                </section>
+                <section class="story-scene">
+                    <div class="scene-card bg-gradient-to-br from-sky-50 to-white rounded-2xl overflow-hidden shadow-lg">
+                        <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter4/Scene_4.png" alt="Scene 4" class="w-full h-64 md:h-80 object-cover"/>
+                        <div class="p-8">
+                            <p class="text-lg md:text-xl font-serif leading-relaxed text-text-main">At Watergalaxy they find Silver and Seal safe all along, and the kidnapping story unravels into a misunderstanding, a messy shop, and one very sorry Orange.</p>
+                        </div>
+                    </div>
+                </section>
+                <section class="story-scene">
+                    <div class="scene-card bg-gradient-to-br from-amber-50 to-white rounded-2xl overflow-hidden shadow-lg">
+                        <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter4/Scene_5.png" alt="Scene 5" class="w-full h-64 md:h-80 object-cover"/>
+                        <div class="p-8">
+                            <p class="text-lg md:text-xl font-serif leading-relaxed text-text-main">The next morning, reporters swarm Floofy’s cottage, and she answers as best she can before settling in knowing life with her friends will never be boring.</p>
+                        </div>
+                    </div>
+                </section>
+                <div class="text-center py-12 border-t border-gray-100">
+                    <span class="material-symbols-outlined text-primary text-4xl mb-4">auto_awesome</span>
+                    <p class="font-serif text-2xl text-primary italic">The End of Chapter Four</p>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 border-t border-gray-100 p-8 sm:px-16">
+                <div class="flex flex-col sm:flex-row justify-between items-center gap-6">
+                    <a class="group flex flex-col items-start gap-1 w-full sm:w-auto text-left hover:bg-gray-100 p-4 rounded-lg transition-colors" href="chapter3.html">
+                        <div class="flex items-center text-text-muted text-sm font-bold uppercase tracking-wider group-hover:text-primary transition-colors">
+                            <span class="material-symbols-outlined text-[16px] mr-1">arrow_back</span> Previous Chapter
+                        </div>
+                        <span class="text-lg font-display font-semibold text-text-main">Freedom at Pearl Aquarium</span>
+                    </a>
+                    <a class="group flex flex-col items-end gap-1 w-full sm:w-auto text-right bg-primary text-white p-4 rounded-lg shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-300" href="chapter5.html">
+                        <div class="flex items-center text-white/80 text-sm font-bold uppercase tracking-wider">
+                            Next Chapter
+                            <span class="material-symbols-outlined text-[16px] ml-1">arrow_forward</span>
+                        </div>
+                        <span class="text-lg font-display font-semibold text-white">New Look, New Adventures</span>
+                    </a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="py-8 text-center text-text-muted text-sm font-display">
+        <p>© 2026 Adora Love Lin. All rights reserved.</p>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            document.getElementById('progress-bar').style.width = (scrollTop / docHeight) * 100 + '%';
+        });
+        let currentFontSize = 100;
+        function increaseFont() {
+            currentFontSize = Math.min(200, currentFontSize + 10);
+            document.getElementById('text-content').style.fontSize = currentFontSize + '%';
+            document.getElementById('font-size-display').textContent = currentFontSize + '%';
+        }
+        function decreaseFont() {
+            currentFontSize = Math.max(70, currentFontSize - 10);
+            document.getElementById('text-content').style.fontSize = currentFontSize + '%';
+            document.getElementById('font-size-display').textContent = currentFontSize + '%';
+        }
+        function setMode(mode) {
+            const textMode = document.getElementById('text-mode');
+            const comicMode = document.getElementById('comic-mode');
+            const textBtn = document.getElementById('text-mode-btn');
+            const comicBtn = document.getElementById('comic-mode-btn');
+            const fontControls = document.getElementById('font-controls');
+            if (mode === 'text') {
+                textMode.classList.remove('hidden');
+                comicMode.classList.add('hidden');
+                textBtn.classList.add('active');
+                comicBtn.classList.remove('active');
+                fontControls.classList.remove('hidden');
+                fontControls.classList.add('flex');
+            } else {
+                textMode.classList.add('hidden');
+                comicMode.classList.remove('hidden');
+                textBtn.classList.remove('active');
+                comicBtn.classList.add('active');
+                fontControls.classList.add('hidden');
+                fontControls.classList.remove('flex');
+            }
+            localStorage.setItem('readingMode', mode);
+            window.scrollTo({ top: 300, behavior: 'smooth' });
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            setMode(localStorage.getItem('readingMode') || 'comic');
+        });
+    </script>
+</body>
+</html>
