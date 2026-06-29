@@ -14,6 +14,10 @@
 *.JPG
 *.JPEG
 
+# Author portrait on home page (small, versioned in repo)
+!assets/
+!assets/adora-portrait.png
+
 # Video
 *.mp4
 *.mov
