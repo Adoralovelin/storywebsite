@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Chapter 5: New Look, New Adventures - Floofy the Axolotl</title>
+    <title>Chapter 5: New Look, New Adventures — Continue on Amazon</title>
     <link href="https://fonts.googleapis.com" rel="preconnect"/>
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
     <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet"/>
@@ -16,10 +16,8 @@
                 extend: {
                     colors: {
                         "primary": "#2e5b6b",
+                        "primary-dark": "#234653",
                         "background-light": "#fbfaf9",
-                        "background-dark": "#21242c",
-                        "paper-light": "#ffffff",
-                        "paper-dark": "#2a2d36",
                         "text-main": "#21242c",
                         "text-muted": "#6c7a7f",
                     },
@@ -31,183 +29,53 @@
             },
         }
     </script>
-    <style>
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 20px; }
-        html { scroll-behavior: smooth; }
-        .scene-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .scene-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.2); }
-        .drop-cap::first-letter {
-            font-size: 4rem; line-height: 0.8; float: left; margin-right: 0.75rem; margin-top: 0.2rem;
-            font-weight: 700; color: #2e5b6b; font-family: 'Playfair Display', serif;
-        }
-        .mode-btn { transition: all 0.3s ease; }
-        .mode-btn.active { background-color: #2e5b6b; color: white; }
-        .story-mode { transition: opacity 0.3s ease; }
-        .dialogue { color: #2e5b6b; font-style: italic; }
-    </style>
+    <script src="js/store.js" defer></script>
 </head>
-<body class="bg-background-light text-text-main antialiased font-display min-h-screen flex flex-col transition-colors duration-300">
-    <div class="fixed top-0 left-0 w-full h-1.5 z-50 bg-gray-200">
-        <div id="progress-bar" class="h-full bg-primary w-[0%] transition-all duration-300 ease-out shadow-[0_0_10px_rgba(46,91,107,0.5)]"></div>
-    </div>
-
-    <header class="sticky top-0 z-40 w-full backdrop-blur-sm bg-background-light/90 border-b border-black/5 transition-all duration-300">
-        <div class="max-w-[1200px] mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+<body class="bg-background-light text-text-main font-display min-h-screen flex flex-col">
+    <header class="sticky top-0 z-40 w-full backdrop-blur-sm bg-background-light/90 border-b border-black/5">
+        <div class="max-w-[880px] mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
             <a class="group flex items-center gap-2 text-text-main hover:text-primary transition-colors" href="stories.html">
                 <span class="material-symbols-outlined text-[20px] group-hover:-translate-x-1 transition-transform">arrow_back</span>
                 <span class="text-sm font-bold tracking-wide">Back to Stories</span>
             </a>
-            <div class="flex items-center gap-3">
-                <div class="flex bg-white border border-gray-200 rounded-full p-1 shadow-sm">
-                    <button type="button" onclick="setMode('text')" id="text-mode-btn" class="mode-btn px-4 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5">
-                        <span class="material-symbols-outlined text-[16px]">article</span> Text
-                    </button>
-                    <button type="button" onclick="setMode('comic')" id="comic-mode-btn" class="mode-btn active px-4 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5">
-                        <span class="material-symbols-outlined text-[16px]">photo_library</span> Comic
-                    </button>
-                </div>
-                <div id="font-controls" class="hidden items-center gap-1 bg-white border border-gray-200 rounded-full px-2 py-1 shadow-sm">
-                    <button type="button" onclick="decreaseFont()" class="p-2 text-text-muted hover:text-primary transition-colors rounded-full hover:bg-gray-100" title="Decrease font size">
-                        <span class="material-symbols-outlined text-[20px]">text_decrease</span>
-                    </button>
-                    <span id="font-size-display" class="text-xs font-bold text-text-muted px-2">100%</span>
-                    <button type="button" onclick="increaseFont()" class="p-2 text-text-muted hover:text-primary transition-colors rounded-full hover:bg-gray-100" title="Increase font size">
-                        <span class="material-symbols-outlined text-[20px]">text_increase</span>
-                    </button>
-                </div>
-            </div>
+            <span class="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full">Full book</span>
         </div>
     </header>
 
-    <main class="flex-grow flex justify-center py-12 px-4 sm:px-6">
-        <article class="w-full max-w-[900px] bg-paper-light rounded-xl shadow-[0_4px_24px_-12px_rgba(0,0,0,0.1)] border border-gray-100 overflow-hidden">
-            <div class="relative h-64 md:h-80 overflow-hidden">
-                <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter5/Cover_Page_Chapter5.png" alt="Chapter 5 Cover" class="w-full h-full object-cover"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
-                    <span class="text-primary-light bg-primary/80 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Chapter 5</span>
-                    <h1 class="font-display font-black text-4xl md:text-5xl tracking-tight mt-4">New Look, New Adventures</h1>
-                    <p class="text-white/80 text-lg mt-2 font-serif italic">A fresh seaweed shop and playful secrets</p>
-                </div>
-            </div>
-
-            <div id="text-mode" class="story-mode hidden px-8 sm:px-12 md:px-20 py-12">
-                <div id="text-content" class="prose prose-lg max-w-none font-serif text-text-main leading-[2] text-lg">
-                    <p class="drop-cap mb-8">Floofy walked into the newly-furnished seaweed store, gaping at all the new sights—the freshly painted, coral-coloured walls, the fluffy carpets beneath her feet, and the different types of seaweed swaying under the piercing light of the sun.</p>
-                    <p class="mb-6">She snapped out of her trance when Popcorn yelled into her ear, <span class="dialogue">"FLOOFY! I’ve been calling you for the last three minutes!"</span> After hearing this bombastic blast, Floofy felt her face heating up so quickly, she changed the subject.</p>
-                    <p class="mb-6"><span class="dialogue">"Ooh, Seal, when did you add all of these new decorations?"</span> she asked in a hurry. <span class="dialogue">"It’s been only around five days since you got back! How did you do this so efficiently?"</span> After all, Floofy was fairly impressed, Seal and Silver usually being the ones late to everything.</p>
-                    <p class="mb-6"><span class="dialogue">"Oh, it was nothing, really. We just…"</span> Seal trailed off, glancing at Silver, a mischievous glint in her eyes. <span class="dialogue">"I don’t think you want to know…"</span></p>
-                </div>
-                <div class="text-center py-12 border-t border-gray-100 mt-12">
-                    <span class="material-symbols-outlined text-primary text-4xl mb-4">auto_awesome</span>
-                    <p class="font-serif text-2xl text-primary italic">The End of Chapter Five</p>
-                </div>
-            </div>
-
-            <div id="comic-mode" class="story-mode px-8 sm:px-16 py-12 space-y-12">
-                <!-- Scene 1 -->
-                <section class="story-scene">
-                    <div class="scene-card bg-gradient-to-br from-fuchsia-50 to-white rounded-2xl overflow-hidden shadow-lg">
-                        <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter5/Scene_1.png" alt="Scene 1" class="w-full h-64 md:h-80 object-cover"/>
-                        <div class="p-8">
-                            <p class="text-lg md:text-xl font-serif leading-relaxed text-text-main">Floofy and Popcorn step into the newly decorated seaweed shop and take in the bright new look.</p>
-                        </div>
+    <main class="flex-grow flex items-center px-4 py-12 sm:py-16">
+        <article class="mx-auto w-full max-w-[720px]">
+            <div class="bg-white rounded-3xl shadow-xl shadow-primary/10 border border-black/5 overflow-hidden">
+                <div class="relative h-48 sm:h-64 overflow-hidden">
+                    <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter5/Cover_Page_Chapter5.png" alt="" class="absolute inset-0 w-full h-full object-cover scale-110 blur-md"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-white via-white/70 to-transparent"></div>
+                    <div class="absolute inset-0 flex items-end justify-center pb-2">
+                        <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter5/Cover_Page_Chapter5.png" alt="Chapter 5 cover" class="w-28 sm:w-36 rounded-xl shadow-2xl ring-4 ring-white object-cover aspect-[2/3]"/>
                     </div>
-                </section>
-
-                <!-- Scene 2 -->
-                <section class="story-scene">
-                    <div class="scene-card bg-gradient-to-br from-purple-50 to-white rounded-2xl overflow-hidden shadow-lg">
-                        <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter5/Scene_2.png" alt="Scene 2" class="w-full h-64 md:h-80 object-cover"/>
-                        <div class="p-8">
-                            <p class="text-lg md:text-xl font-serif leading-relaxed text-text-main">Popcorn snaps Floofy out of her daydream while she excitedly asks how everything changed so fast.</p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Scene 3 -->
-                <section class="story-scene">
-                    <div class="scene-card bg-gradient-to-br from-rose-50 to-white rounded-2xl overflow-hidden shadow-lg">
-                        <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter5/Scene_3.png" alt="Scene 3" class="w-full h-64 md:h-80 object-cover"/>
-                        <div class="p-8">
-                            <p class="text-lg md:text-xl font-serif leading-relaxed text-text-main">Seal and Silver share a mysterious smile, hinting that there is more to the story.</p>
-                        </div>
-                    </div>
-                </section>
-
-                <div class="text-center py-12 border-t border-gray-100">
-                    <span class="material-symbols-outlined text-primary text-4xl mb-4">auto_awesome</span>
-                    <p class="font-serif text-2xl text-primary italic">The End of Chapter Five</p>
                 </div>
-            </div>
-
-            <div class="bg-gray-50 border-t border-gray-100 p-8 sm:px-16">
-                <div class="flex flex-col sm:flex-row justify-between items-center gap-6">
-                    <a class="group flex flex-col items-start gap-1 w-full sm:w-auto text-left hover:bg-gray-100 p-4 rounded-lg transition-colors" href="chapter4.html">
-                        <div class="flex items-center text-text-muted text-sm font-bold uppercase tracking-wider group-hover:text-primary transition-colors">
-                            <span class="material-symbols-outlined text-[16px] mr-1">arrow_back</span> Previous Chapter
-                        </div>
-                        <span class="text-lg font-display font-semibold text-text-main">The Case That Stumped Popcorn</span>
-                    </a>
-                    <div class="flex flex-col items-end gap-1 w-full sm:w-auto text-right bg-gray-200 text-gray-500 p-4 rounded-lg cursor-not-allowed">
-                        <div class="flex items-center text-gray-400 text-sm font-bold uppercase tracking-wider">Next Chapter <span class="material-symbols-outlined text-[16px] ml-1">arrow_forward</span></div>
-                        <span class="text-lg font-display font-semibold text-gray-400">Coming Soon...</span>
+                <div class="px-6 sm:px-12 pt-16 pb-10 text-center">
+                    <p class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3">Chapter 05 · Locked preview</p>
+                    <h1 class="font-serif text-3xl sm:text-4xl font-bold text-text-main leading-tight mb-3">New Look, New Adventures</h1>
+                    <p class="text-text-muted text-base sm:text-lg leading-relaxed max-w-md mx-auto mb-8">
+                        The free trial ends after Chapter 1. This chapter — and the rest of Floofy's adventure — lives in the full book.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                        <a data-amazon-link href="https://www.amazon.com/" class="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-xl bg-primary hover:bg-primary-dark text-white font-bold shadow-lg shadow-primary/25 transition-all hover:-translate-y-0.5">
+                            <span class="material-symbols-outlined">menu_book</span>
+                            Continue on Amazon
+                        </a>
+                        <a href="chapter1.html" class="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-xl border border-black/10 bg-white text-text-main font-bold hover:bg-black/5 transition-colors">
+                            <span class="material-symbols-outlined text-primary">auto_stories</span>
+                            Read free Chapter 1
+                        </a>
                     </div>
+                    <p class="mt-5 text-xs text-text-muted">Opens Amazon in a new tab · You can still enjoy Chapter 1 here for free</p>
                 </div>
             </div>
         </article>
     </main>
 
-    <footer class="py-8 text-center text-text-muted text-sm font-display">
+    <footer class="py-8 text-center text-text-muted text-sm">
         <p>© 2026 Adora Love Lin. All rights reserved.</p>
     </footer>
-
-    <script>
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            document.getElementById('progress-bar').style.width = (scrollTop / docHeight) * 100 + '%';
-        });
-        let currentFontSize = 100;
-        function increaseFont() {
-            currentFontSize = Math.min(200, currentFontSize + 10);
-            document.getElementById('text-content').style.fontSize = currentFontSize + '%';
-            document.getElementById('font-size-display').textContent = currentFontSize + '%';
-        }
-        function decreaseFont() {
-            currentFontSize = Math.max(70, currentFontSize - 10);
-            document.getElementById('text-content').style.fontSize = currentFontSize + '%';
-            document.getElementById('font-size-display').textContent = currentFontSize + '%';
-        }
-        function setMode(mode) {
-            const textMode = document.getElementById('text-mode');
-            const comicMode = document.getElementById('comic-mode');
-            const textBtn = document.getElementById('text-mode-btn');
-            const comicBtn = document.getElementById('comic-mode-btn');
-            const fontControls = document.getElementById('font-controls');
-            if (mode === 'text') {
-                textMode.classList.remove('hidden');
-                comicMode.classList.add('hidden');
-                textBtn.classList.add('active');
-                comicBtn.classList.remove('active');
-                fontControls.classList.remove('hidden');
-                fontControls.classList.add('flex');
-            } else {
-                textMode.classList.add('hidden');
-                comicMode.classList.remove('hidden');
-                textBtn.classList.remove('active');
-                comicBtn.classList.add('active');
-                fontControls.classList.add('hidden');
-                fontControls.classList.remove('flex');
-            }
-            localStorage.setItem('readingMode', mode);
-            window.scrollTo({ top: 300, behavior: 'smooth' });
-        }
-        document.addEventListener('DOMContentLoaded', () => {
-            setMode(localStorage.getItem('readingMode') || 'comic');
-        });
-    </script>
 </body>
 </html>

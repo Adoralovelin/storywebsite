@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="js/store.js" defer></script>
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -60,7 +61,7 @@
                 </div>
                 <div class="flex items-center gap-4">
                     <a href="chapter1.html" class="flex items-center justify-center h-10 px-5 rounded-lg bg-primary hover:bg-primary-dark text-white text-sm font-bold transition-all shadow-sm">
-                        Start Reading
+                        Free preview
                     </a>
                 </div>
             </div>
@@ -78,7 +79,7 @@
                         <div class="mb-8">
                             <h1 class="text-4xl font-black tracking-tight text-background-dark mb-2">The Adventures</h1>
                             <p class="text-gray-500 text-sm leading-relaxed">
-                                All chapters of Floofy the Axolotl's underwater adventures. New chapters coming soon!
+                                Read Chapter 1 free. Later chapters continue in the full book on Amazon.
                             </p>
                             <!-- Reading Mode Info -->
                             <div class="mt-4 p-3 bg-primary/5 rounded-lg border border-primary/10">
@@ -104,10 +105,14 @@
                                     <span class="font-bold">5</span>
                                 </div>
                                 <div class="flex justify-between text-xs">
-                                    <span class="text-gray-500">Status</span>
-                                    <span class="font-bold text-primary">Ongoing</span>
+                                    <span class="text-gray-500">On this site</span>
+                                    <span class="font-bold text-primary">Chapter 1 free</span>
                                 </div>
                             </div>
+                            <a data-amazon-link href="https://www.amazon.com/" class="w-full h-11 rounded-lg bg-primary hover:bg-primary-dark text-white text-xs font-bold flex items-center justify-center gap-2 transition-colors">
+                                <span class="material-symbols-outlined text-[16px]">menu_book</span>
+                                Continue on Amazon
+                            </a>
                         </div>
 
                         <!-- Characters Quick View -->
@@ -146,7 +151,7 @@
             <main class="flex-1 min-w-0">
                 <!-- Toolbar -->
                 <div class="flex flex-wrap items-center justify-between gap-4 mb-6 pb-4 border-b border-gray-200">
-                    <p class="text-sm font-medium text-gray-500">Showing <span class="text-background-dark font-bold">5</span> chapters</p>
+                    <p class="text-sm font-medium text-gray-500">1 free preview · 4 chapters in the full book</p>
                 </div>
 
                 <!-- Chapter Cards Grid -->
@@ -158,8 +163,8 @@
                                 <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter1/Chapter1-CoverPage.png" alt="Chapter 1 Cover" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"/>
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 z-10"></div>
                                 <div class="absolute top-2 right-2 z-20">
-                                    <span class="px-2 py-0.5 rounded bg-white/95 text-primary text-[9px] uppercase font-bold tracking-wider shadow-sm backdrop-blur-sm">
-                                        Complete
+                                    <span class="px-2 py-0.5 rounded bg-emerald-500 text-white text-[9px] uppercase font-bold tracking-wider shadow-sm">
+                                        Free preview
                                     </span>
                                 </div>
                             </div>
@@ -177,100 +182,96 @@
                     </article>
 
                     <!-- Chapter 2 Card -->
-                    <article class="group bg-white rounded-lg overflow-hidden flex flex-col h-full border border-gray-100 hover:border-primary/30 shadow-soft hover:shadow-soft-hover transition-all duration-300 hover:-translate-y-1">
+                    <article class="group bg-white rounded-lg overflow-hidden flex flex-col h-full border border-gray-100 shadow-soft">
                         <a href="chapter2.html" class="block">
                             <div class="relative w-full aspect-[2/3] overflow-hidden bg-cyan-50">
-                                <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter2/Chapter2-CoverPage.png" alt="Chapter 2 Cover" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"/>
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 z-10"></div>
-                                <div class="absolute top-2 right-2 z-20">
-                                    <span class="px-2 py-0.5 rounded bg-primary text-white text-[9px] uppercase font-bold tracking-wider shadow-sm">
-                                        New
-                                    </span>
+                                <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter2/Chapter2-CoverPage.png" alt="Chapter 2 Cover" class="absolute inset-0 h-full w-full object-cover blur-[2px] scale-105"/>
+                                <div class="absolute inset-0 bg-black/45 z-10"></div>
+                                <div class="absolute inset-0 z-20 flex flex-col items-center justify-center text-white px-3">
+                                    <span class="material-symbols-outlined text-3xl mb-1">lock</span>
+                                    <span class="text-[10px] font-bold uppercase tracking-wider">Full book</span>
                                 </div>
                             </div>
                         </a>
                         <div class="p-3 flex flex-col gap-2 grow">
                             <div>
                                 <a href="chapter2.html" class="block">
-                                    <h3 class="text-sm font-bold text-background-dark leading-tight group-hover:text-primary transition-colors">Floofy's BIG Idea!!</h3>
+                                    <h3 class="text-sm font-bold text-background-dark leading-tight">Floofy's BIG Idea!!</h3>
                                 </a>
                                 <p class="serif-hook text-xs text-gray-500 italic mt-1 line-clamp-2 leading-relaxed">
-                                    "The Gem of the Sea is stolen!"
+                                    Continue on Amazon
                                 </p>
                             </div>
                         </div>
                     </article>
 
                     <!-- Chapter 3 Card -->
-                    <article class="group bg-white rounded-lg overflow-hidden flex flex-col h-full border border-gray-100 hover:border-primary/30 shadow-soft hover:shadow-soft-hover transition-all duration-300 hover:-translate-y-1">
+                    <article class="group bg-white rounded-lg overflow-hidden flex flex-col h-full border border-gray-100 shadow-soft">
                         <a href="chapter3.html" class="block">
                             <div class="relative w-full aspect-[2/3] overflow-hidden bg-cyan-50">
-                                <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter3/Cover_Page_.png" alt="Chapter 3 Cover" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"/>
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 z-10"></div>
-                                <div class="absolute top-2 right-2 z-20">
-                                    <span class="px-2 py-0.5 rounded bg-white/95 text-primary text-[9px] uppercase font-bold tracking-wider shadow-sm backdrop-blur-sm">
-                                        Complete
-                                    </span>
+                                <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter3/Cover_Page_.png" alt="Chapter 3 Cover" class="absolute inset-0 h-full w-full object-cover blur-[2px] scale-105"/>
+                                <div class="absolute inset-0 bg-black/45 z-10"></div>
+                                <div class="absolute inset-0 z-20 flex flex-col items-center justify-center text-white px-3">
+                                    <span class="material-symbols-outlined text-3xl mb-1">lock</span>
+                                    <span class="text-[10px] font-bold uppercase tracking-wider">Full book</span>
                                 </div>
                             </div>
                         </a>
                         <div class="p-3 flex flex-col gap-2 grow">
                             <div>
                                 <a href="chapter3.html" class="block">
-                                    <h3 class="text-sm font-bold text-background-dark leading-tight group-hover:text-primary transition-colors">Freedom at Pearl Aquarium</h3>
+                                    <h3 class="text-sm font-bold text-background-dark leading-tight">Freedom at Pearl Aquarium</h3>
                                 </a>
                                 <p class="serif-hook text-xs text-gray-500 italic mt-1 line-clamp-2 leading-relaxed">
-                                    "Breaking into Pearl Aquarium—and building a sanctuary."
+                                    Continue on Amazon
                                 </p>
                             </div>
                         </div>
                     </article>
 
                     <!-- Chapter 4 Card -->
-                    <article class="group bg-white rounded-lg overflow-hidden flex flex-col h-full border border-gray-100 hover:border-primary/30 shadow-soft hover:shadow-soft-hover transition-all duration-300 hover:-translate-y-1">
+                    <article class="group bg-white rounded-lg overflow-hidden flex flex-col h-full border border-gray-100 shadow-soft">
                         <a href="chapter4.html" class="block">
                             <div class="relative w-full aspect-[2/3] overflow-hidden bg-indigo-50">
-                                <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter4/Cover_Page_Chapter4.png" alt="Chapter 4 Cover" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"/>
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 z-10"></div>
-                                <div class="absolute top-2 right-2 z-20">
-                                    <span class="px-2 py-0.5 rounded bg-white/95 text-primary text-[9px] uppercase font-bold tracking-wider shadow-sm backdrop-blur-sm">
-                                        Complete
-                                    </span>
+                                <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter4/Cover_Page_Chapter4.png" alt="Chapter 4 Cover" class="absolute inset-0 h-full w-full object-cover blur-[2px] scale-105"/>
+                                <div class="absolute inset-0 bg-black/45 z-10"></div>
+                                <div class="absolute inset-0 z-20 flex flex-col items-center justify-center text-white px-3">
+                                    <span class="material-symbols-outlined text-3xl mb-1">lock</span>
+                                    <span class="text-[10px] font-bold uppercase tracking-wider">Full book</span>
                                 </div>
                             </div>
                         </a>
                         <div class="p-3 flex flex-col gap-2 grow">
                             <div>
                                 <a href="chapter4.html" class="block">
-                                    <h3 class="text-sm font-bold text-background-dark leading-tight group-hover:text-primary transition-colors">The Case That Stumped Popcorn</h3>
+                                    <h3 class="text-sm font-bold text-background-dark leading-tight">The Case That Stumped Popcorn</h3>
                                 </a>
                                 <p class="serif-hook text-xs text-gray-500 italic mt-1 line-clamp-2 leading-relaxed">
-                                    "Silver and Seal are missing—or are they?"
+                                    Continue on Amazon
                                 </p>
                             </div>
                         </div>
                     </article>
 
                     <!-- Chapter 5 Card -->
-                    <article class="group bg-white rounded-lg overflow-hidden flex flex-col h-full border border-gray-100 hover:border-primary/30 shadow-soft hover:shadow-soft-hover transition-all duration-300 hover:-translate-y-1">
+                    <article class="group bg-white rounded-lg overflow-hidden flex flex-col h-full border border-gray-100 shadow-soft">
                         <a href="chapter5.html" class="block">
                             <div class="relative w-full aspect-[2/3] overflow-hidden bg-fuchsia-50">
-                                <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter5/Cover_Page_Chapter5.png" alt="Chapter 5 Cover" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"/>
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 z-10"></div>
-                                <div class="absolute top-2 right-2 z-20">
-                                    <span class="px-2 py-0.5 rounded bg-primary text-white text-[9px] uppercase font-bold tracking-wider shadow-sm">
-                                        New
-                                    </span>
+                                <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter5/Cover_Page_Chapter5.png" alt="Chapter 5 Cover" class="absolute inset-0 h-full w-full object-cover blur-[2px] scale-105"/>
+                                <div class="absolute inset-0 bg-black/45 z-10"></div>
+                                <div class="absolute inset-0 z-20 flex flex-col items-center justify-center text-white px-3">
+                                    <span class="material-symbols-outlined text-3xl mb-1">lock</span>
+                                    <span class="text-[10px] font-bold uppercase tracking-wider">Full book</span>
                                 </div>
                             </div>
                         </a>
                         <div class="p-3 flex flex-col gap-2 grow">
                             <div>
                                 <a href="chapter5.html" class="block">
-                                    <h3 class="text-sm font-bold text-background-dark leading-tight group-hover:text-primary transition-colors">New Look, New Adventures</h3>
+                                    <h3 class="text-sm font-bold text-background-dark leading-tight">New Look, New Adventures</h3>
                                 </a>
                                 <p class="serif-hook text-xs text-gray-500 italic mt-1 line-clamp-2 leading-relaxed">
-                                    "The seaweed shop gets a magical makeover."
+                                    Continue on Amazon
                                 </p>
                             </div>
                         </div>

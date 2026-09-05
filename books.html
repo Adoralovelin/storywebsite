@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="js/store.js" defer></script>
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -47,12 +48,31 @@
             background: #94a3b8;
         }
         
-        .book-card {
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+        .book-card,
+        .book-card:hover,
+        .book-card:focus,
+        .book-card:focus-visible,
+        .book-card:active {
+            outline: none;
+            border: none;
+            box-shadow: none;
+            -webkit-tap-highlight-color: transparent;
         }
-        .book-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 16px 32px -10px rgba(0, 0, 0, 0.2);
+        a.book-card {
+            text-decoration: none;
+            color: inherit;
+        }
+        @keyframes buy-glow {
+            0%, 100% { transform: translateY(0); box-shadow: 0 4px 14px rgba(46, 91, 107, 0.28); }
+            50% { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(46, 91, 107, 0.45); }
+        }
+        .buy-btn {
+            animation: buy-glow 1.8s ease-in-out infinite;
+        }
+        .buy-btn:hover {
+            animation: none;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px rgba(46, 91, 107, 0.4);
         }
     </style>
 </head>
@@ -97,82 +117,104 @@
                 <div class="mx-auto max-w-7xl">
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
                         <!-- Floofy the Axolotl Book -->
-                        <a href="stories.html" class="book-card group cursor-pointer">
-                            <div class="relative mb-6 w-full aspect-[2/3] overflow-hidden rounded-xl shadow-2xl bg-sky-50">
-                                <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter1/Chapter1-CoverPage.png" alt="Floofy the Axolotl" class="absolute inset-0 h-full w-full object-cover"/>
-                                <div class="absolute inset-0 bg-primary/80 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex items-center justify-center">
-                                    <div class="text-center px-4">
-                                        <p class="font-serif text-2xl font-bold text-white mb-2">Explore Adventures</p>
-                                        <p class="text-white/90 text-sm">Click to view all chapters</p>
+                        <div class="book-card group">
+                            <a href="chapter1.html" class="block">
+                                <div class="relative mb-6 w-full aspect-[2/3] overflow-hidden rounded-xl shadow-2xl bg-sky-50">
+                                    <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter1/Chapter1-CoverPage.png" alt="Floofy the Axolotl" class="absolute inset-0 h-full w-full object-cover"/>
+                                    <div class="absolute inset-0 bg-primary/80 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex items-center justify-center">
+                                        <div class="text-center px-4">
+                                            <p class="font-serif text-2xl font-bold text-white mb-2">Read free preview</p>
+                                            <p class="text-white/90 text-sm">Chapter 1 is open on this site</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                             <h2 class="text-2xl font-bold text-text-main leading-tight mb-2 font-serif">Floofy the Axolotl</h2>
                             <p class="text-text-muted text-base mb-3">Join Floofy on exciting underwater adventures filled with friendship and mysteries!</p>
-                            <div class="flex items-center gap-2 text-sm text-primary font-medium">
-                                <span>4 Chapters</span>
-                                <span>•</span>
-                                <span>Ongoing Series</span>
+                            <div class="flex flex-wrap items-center gap-3">
+                                <a href="chapter1.html" class="text-sm font-medium text-primary hover:underline">Free Chapter 1</a>
+                                <a data-amazon-link href="https://www.amazon.com/" class="buy-btn inline-flex items-center gap-2 rounded-xl bg-primary hover:bg-primary-light text-white text-sm font-bold px-4 py-2.5">
+                                    <span class="material-symbols-outlined text-[18px] text-white">menu_book</span>
+                                    Buy Now on Amazon
+                                </a>
                             </div>
-                        </a>
+                        </div>
 
                         <!-- A Little Fire Book -->
-                        <a href="A_Little_Fire.html" class="book-card group cursor-pointer">
-                            <div class="relative mb-6 w-full overflow-hidden rounded-xl shadow-2xl bg-black">
-                                <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/A_Little_Fire/A_Little_Fire_cover_page.png" alt="A Little Fire" class="w-full h-auto object-contain"/>
-                                <div class="absolute inset-0 bg-primary/80 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex items-center justify-center">
-                                    <div class="text-center px-4">
-                                        <p class="font-serif text-2xl font-bold text-white mb-2">Read Story</p>
-                                        <p class="text-white/90 text-sm">Click to start reading</p>
+                        <div class="book-card group">
+                            <a href="A_Little_Fire.html" class="block outline-none">
+                                <div class="relative mb-6 w-full aspect-[2/3] overflow-hidden rounded-xl shadow-2xl bg-black">
+                                    <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/A_Little_Fire/A_Little_Fire_cover_page.png" alt="A Little Fire" class="absolute inset-0 h-full w-full object-cover"/>
+                                    <div class="absolute inset-0 bg-primary/80 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex items-center justify-center">
+                                        <div class="text-center px-4">
+                                            <p class="font-serif text-2xl font-bold text-white mb-2">Read Story</p>
+                                            <p class="text-white/90 text-sm">Click to start reading</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                             <h2 class="text-2xl font-bold text-text-main leading-tight mb-2 font-serif">A Little Fire</h2>
                             <p class="text-text-muted text-base mb-3">A heartwarming tale about hope, friendship, and the power of a positive mindset.</p>
-                            <div class="flex items-center gap-2 text-sm text-primary font-medium">
-                                <span>Complete Story</span>
+                            <div class="flex flex-wrap items-center gap-3">
+                                <a href="A_Little_Fire.html" class="text-sm font-medium text-primary hover:underline">Read Story</a>
+                                <span class="inline-flex items-center gap-2 rounded-xl bg-primary text-white text-sm font-bold px-4 py-2.5 cursor-default">
+                                    <span class="material-symbols-outlined text-[18px] text-white">schedule</span>
+                                    Coming Soon
+                                </span>
                             </div>
-                        </a>
+                        </div>
 
                         <!-- The Deer Incident Book -->
-                        <a href="The_Deer_Incident.html" class="book-card group cursor-pointer">
-                            <div class="relative mb-6 w-full overflow-hidden rounded-xl shadow-2xl bg-gradient-to-br from-emerald-50 to-green-100">
-                                <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/The_Deer_Incident/The_Deer_Incident_cover_page.png" alt="The Deer Incident" class="w-full h-auto object-contain"/>
-                                <div class="absolute inset-0 bg-primary/80 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex items-center justify-center">
-                                    <div class="text-center px-4">
-                                        <p class="font-serif text-2xl font-bold text-white mb-2">Read Story</p>
-                                        <p class="text-white/90 text-sm">Click to start reading</p>
+                        <div class="book-card group">
+                            <a href="The_Deer_Incident.html" class="block outline-none">
+                                <div class="relative mb-6 w-full aspect-[2/3] overflow-hidden rounded-xl shadow-2xl bg-gradient-to-br from-emerald-50 to-green-100">
+                                    <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/The_Deer_Incident/The_Deer_Incident_cover_page.png" alt="The Deer Incident" class="absolute inset-0 h-full w-full object-cover"/>
+                                    <div class="absolute inset-0 bg-primary/80 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex items-center justify-center">
+                                        <div class="text-center px-4">
+                                            <p class="font-serif text-2xl font-bold text-white mb-2">Read Story</p>
+                                            <p class="text-white/90 text-sm">Click to start reading</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                             <h2 class="text-2xl font-bold text-text-main leading-tight mb-2 font-serif">The Deer Incident</h2>
                             <p class="text-text-muted text-base mb-3">A thrilling encounter that reminds us to appreciate the beauty of nature.</p>
-                            <div class="flex items-center gap-2 text-sm text-primary font-medium">
-                                <span>Complete Story</span>
+                            <div class="flex flex-wrap items-center gap-3">
+                                <a href="The_Deer_Incident.html" class="text-sm font-medium text-primary hover:underline">Read Story</a>
+                                <span class="inline-flex items-center gap-2 rounded-xl bg-primary text-white text-sm font-bold px-4 py-2.5 cursor-default">
+                                    <span class="material-symbols-outlined text-[18px] text-white">schedule</span>
+                                    Coming Soon
+                                </span>
                             </div>
-                        </a>
+                        </div>
 
                         <!-- Why the Moon is White Book -->
-                        <a href="Why_The_Moon_Is_White.html" class="book-card group cursor-pointer">
-                            <div class="relative mb-6 w-full overflow-hidden rounded-xl shadow-2xl bg-gradient-to-br from-blue-50 to-purple-100 aspect-[3/4]">
-                                <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Why_The_Moon_Is_White/Why_the_moon_is_white.png" alt="Why the Moon is White" class="w-full h-full object-contain"/>
-                                <div class="absolute inset-0 bg-primary/80 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex items-center justify-center">
-                                    <div class="text-center px-4">
-                                        <p class="font-serif text-2xl font-bold text-white mb-2">Read Story</p>
-                                        <p class="text-white/90 text-sm">Click to start reading</p>
+                        <div class="book-card group">
+                            <a href="Why_The_Moon_Is_White.html" class="block outline-none">
+                                <div class="relative mb-6 w-full aspect-[2/3] overflow-hidden rounded-xl shadow-2xl bg-gradient-to-br from-blue-50 to-purple-100">
+                                    <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Why_The_Moon_Is_White/Why_the_moon_is_white.png" alt="Why the Moon is White" class="absolute inset-0 h-full w-full object-cover"/>
+                                    <div class="absolute inset-0 bg-primary/80 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex items-center justify-center">
+                                        <div class="text-center px-4">
+                                            <p class="font-serif text-2xl font-bold text-white mb-2">Read Story</p>
+                                            <p class="text-white/90 text-sm">Click to start reading</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                             <h2 class="text-2xl font-bold text-text-main leading-tight mb-2 font-serif">Why the Moon is White</h2>
                             <p class="text-text-muted text-base mb-3">Discover the magical tale of Carrot, a brave bunny, and how she changed the moon forever.</p>
-                            <div class="flex items-center gap-2 text-sm text-primary font-medium">
-                                <span>Complete Story</span>
+                            <div class="flex flex-wrap items-center gap-3">
+                                <a href="Why_The_Moon_Is_White.html" class="text-sm font-medium text-primary hover:underline">Read Story</a>
+                                <span class="inline-flex items-center gap-2 rounded-xl bg-primary text-white text-sm font-bold px-4 py-2.5 cursor-default">
+                                    <span class="material-symbols-outlined text-[18px] text-white">schedule</span>
+                                    Coming Soon
+                                </span>
                             </div>
-                        </a>
+                        </div>
 
                         <!-- Coming Soon Card -->
                         <div class="book-card opacity-60">
-                            <div class="relative mb-6 w-full overflow-hidden rounded-xl shadow-md bg-gradient-to-br from-gray-200 to-gray-300 aspect-[3/4] flex items-center justify-center">
+                            <div class="relative mb-6 w-full aspect-[2/3] overflow-hidden rounded-xl shadow-md bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
                                 <div class="text-center p-6">
                                     <span class="material-symbols-outlined text-gray-400 text-6xl mb-4 block">lock</span>
                                     <h3 class="font-serif text-2xl font-bold text-gray-500 mb-2">Coming Soon</h3>

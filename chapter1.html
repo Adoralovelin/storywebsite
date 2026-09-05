@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="js/store.js" defer></script>
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -136,7 +137,7 @@
                 <img src="https://cojnlvqpydgzhxwayjgk.supabase.co/storage/v1/object/public/site-media/Chapter1/Chapter1-CoverPage.png" alt="Chapter 1 Cover" class="w-full h-full object-cover"/>
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
                 <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
-                    <span class="text-primary-light bg-primary/80 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Chapter 1</span>
+                    <span class="text-white bg-emerald-600/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Free preview · Chapter 1</span>
                     <h1 class="font-display font-black text-4xl md:text-5xl tracking-tight mt-4">Think Before You Act</h1>
                     <p class="text-white/80 text-lg mt-2 font-serif italic">An adventure of friendship and preparation</p>
                 </div>
@@ -480,26 +481,26 @@
                     </div>
                 </section>
 
-                <!-- End Message -->
-                <div class="text-center py-12 border-t border-gray-100">
-                    <span class="material-symbols-outlined text-primary text-4xl mb-4">auto_awesome</span>
-                    <p class="font-serif text-2xl text-primary italic">The End of Chapter One</p>
-                    <p class="text-text-muted mt-4">What adventure awaits Floofy next?</p>
-                </div>
-                
-                <!-- Game Call-to-Action -->
-                <div class="text-center py-8 px-6 bg-gradient-to-r from-cyan-50 to-blue-50 border-t border-b border-cyan-100 mb-8">
-                    <div class="max-w-2xl mx-auto">
-                        <div class="flex items-center justify-center gap-2 mb-3">
-                            <span class="material-symbols-outlined text-primary text-3xl">sports_esports</span>
-                            <h3 class="font-serif text-2xl font-bold text-text-main">Play the Racing Game!</h3>
-                        </div>
-                        <p class="text-text-muted mb-6">Experience Floofy's race against Orca! Avoid obstacles, collect boosts, and see how far you can go!</p>
-                        <a href="racing_game.html" class="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                            <span class="material-symbols-outlined">play_arrow</span>
-                            <span>Start Racing!</span>
+                <!-- End of free preview -->
+                <div class="mx-4 sm:mx-10 mb-10 rounded-3xl border border-primary/15 bg-gradient-to-br from-primary/[0.06] to-white p-8 sm:p-12 text-center">
+                    <span class="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-primary mb-4">
+                        Free preview complete
+                    </span>
+                    <h3 class="font-serif text-2xl sm:text-3xl font-bold text-text-main mb-3">You've finished Chapter 1</h3>
+                    <p class="text-text-muted text-base sm:text-lg max-w-lg mx-auto mb-8 leading-relaxed">
+                        That's the free trial. The Gem of the Sea, Pearl Aquarium, and the rest of Floofy's story continue in the full book.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                        <a data-amazon-link href="https://www.amazon.com/" class="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-xl bg-primary hover:bg-primary-dark text-white font-bold shadow-lg shadow-primary/25 transition-all hover:-translate-y-0.5">
+                            <span class="material-symbols-outlined">menu_book</span>
+                            Continue on Amazon
+                        </a>
+                        <a href="racing_game.html" class="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-xl border border-black/10 bg-white text-text-main font-bold hover:bg-black/5 transition-colors">
+                            <span class="material-symbols-outlined text-primary">sports_esports</span>
+                            Play the racing game
                         </a>
                     </div>
+                    <p class="mt-4 text-xs text-text-muted">Opens Amazon in a new tab</p>
                 </div>
             </div>
 
@@ -513,12 +514,12 @@
                         </div>
                         <span class="text-lg font-display font-semibold text-text-main">Back to Library</span>
                     </a>
-                    <a class="group flex flex-col items-end gap-1 w-full sm:w-auto text-right bg-primary text-white p-4 rounded-lg shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-300" href="chapter2.html">
+                    <a data-amazon-link href="https://www.amazon.com/" class="group flex flex-col items-end gap-1 w-full sm:w-auto text-right bg-primary text-white p-4 rounded-lg shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-300">
                         <div class="flex items-center text-white/80 text-sm font-bold uppercase tracking-wider">
-                            Next Chapter
-                            <span class="material-symbols-outlined text-[16px] ml-1">arrow_forward</span>
+                            Continue the book
+                            <span class="material-symbols-outlined text-[16px] ml-1">open_in_new</span>
                         </div>
-                        <span class="text-lg font-display font-semibold text-white">Floofy's BIG Idea!!</span>
+                        <span class="text-lg font-display font-semibold text-white">Get it on Amazon</span>
                     </a>
                 </div>
             </div>

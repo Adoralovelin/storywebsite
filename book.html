@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="js/store.js" defer></script>
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -91,18 +92,12 @@
                         <div class="flex flex-col gap-3">
                             <a href="chapter1.html" class="w-full h-14 bg-primary hover:bg-primary-dark text-white rounded-xl font-semibold text-lg shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all flex items-center justify-center gap-3 group">
                                 <span class="material-symbols-outlined group-hover:animate-pulse">auto_stories</span>
-                                Start Reading
+                                Read free preview
                             </a>
-                            <div class="grid grid-cols-2 gap-3">
-                                <button class="h-12 bg-white border border-gray-200 hover:border-primary/50 text-text-main rounded-xl font-medium text-sm transition-colors flex items-center justify-center gap-2">
-                                    <span class="material-symbols-outlined text-primary">bookmark_add</span>
-                                    Save
-                                </button>
-                                <button class="h-12 bg-white border border-gray-200 hover:border-primary/50 text-text-main rounded-xl font-medium text-sm transition-colors flex items-center justify-center gap-2">
-                                    <span class="material-symbols-outlined text-text-muted">share</span>
-                                    Share
-                                </button>
-                            </div>
+                            <a data-amazon-link href="https://www.amazon.com/" class="w-full h-12 bg-white border border-gray-200 hover:border-primary/50 text-text-main rounded-xl font-medium text-sm transition-colors flex items-center justify-center gap-2">
+                                <span class="material-symbols-outlined text-primary">menu_book</span>
+                                Continue on Amazon
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -222,59 +217,75 @@
                                     </div>
                                 </div>
                                 <div class="flex items-center gap-6">
-                                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-700 uppercase tracking-wide">Complete</span>
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 uppercase tracking-wide">Free preview</span>
                                     <span class="material-symbols-outlined text-gray-300 chapter-arrow opacity-0 transition-all duration-300">arrow_forward</span>
                                 </div>
                             </a>
                             
                             <!-- Chapter 2 -->
-                            <a class="chapter-row group flex items-center justify-between p-4 rounded-xl hover:bg-background-light transition-all border border-transparent hover:border-primary/10" href="chapter2.html">
+                            <a class="chapter-row group flex items-center justify-between p-4 rounded-xl bg-background-light/80 border border-transparent" href="chapter2.html">
                                 <div class="flex items-center gap-4 md:gap-6">
-                                    <span class="flex-shrink-0 w-10 h-10 rounded-full bg-[#f1f3f3] flex items-center justify-center text-text-muted font-bold text-sm group-hover:bg-primary group-hover:text-white transition-colors">
+                                    <span class="flex-shrink-0 w-10 h-10 rounded-full bg-[#f1f3f3] flex items-center justify-center text-text-muted font-bold text-sm">
                                         02
                                     </span>
                                     <div class="flex flex-col">
-                                        <span class="text-base font-bold text-text-main group-hover:text-primary transition-colors">Floofy's BIG Idea!!</span>
-                                        <span class="text-xs text-text-muted mt-1">Floofy and Popcorn solve a mystery and help a new friend</span>
+                                        <span class="text-base font-bold text-text-main">Floofy's BIG Idea!!</span>
+                                        <span class="text-xs text-text-muted mt-1">Available in the full book</span>
                                     </div>
                                 </div>
-                                <div class="flex items-center gap-6">
-                                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-primary/10 text-primary uppercase tracking-wide">New</span>
-                                    <span class="material-symbols-outlined text-gray-300 chapter-arrow opacity-0 transition-all duration-300">arrow_forward</span>
+                                <div class="flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-text-muted text-[18px]">lock</span>
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-gray-100 text-text-muted uppercase tracking-wide">Amazon</span>
                                 </div>
                             </a>
                             
                             <!-- Chapter 3 -->
-                            <a class="chapter-row group flex items-center justify-between p-4 rounded-xl hover:bg-background-light transition-all border border-transparent hover:border-primary/10" href="chapter3.html">
+                            <a class="chapter-row group flex items-center justify-between p-4 rounded-xl bg-background-light/80 border border-transparent" href="chapter3.html">
                                 <div class="flex items-center gap-4 md:gap-6">
-                                    <span class="flex-shrink-0 w-10 h-10 rounded-full bg-[#f1f3f3] flex items-center justify-center text-text-muted font-bold text-sm group-hover:bg-primary group-hover:text-white transition-colors">
+                                    <span class="flex-shrink-0 w-10 h-10 rounded-full bg-[#f1f3f3] flex items-center justify-center text-text-muted font-bold text-sm">
                                         03
                                     </span>
                                     <div class="flex flex-col">
-                                        <span class="text-base font-bold text-text-main group-hover:text-primary transition-colors">Freedom at Pearl Aquarium</span>
-                                        <span class="text-xs text-text-muted mt-1">A rescue at Pearl Aquarium and a new sanctuary for the sea</span>
+                                        <span class="text-base font-bold text-text-main">Freedom at Pearl Aquarium</span>
+                                        <span class="text-xs text-text-muted mt-1">Available in the full book</span>
                                     </div>
                                 </div>
-                                <div class="flex items-center gap-6">
-                                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-700 uppercase tracking-wide">Complete</span>
-                                    <span class="material-symbols-outlined text-gray-300 chapter-arrow opacity-0 transition-all duration-300">arrow_forward</span>
+                                <div class="flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-text-muted text-[18px]">lock</span>
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-gray-100 text-text-muted uppercase tracking-wide">Amazon</span>
                                 </div>
                             </a>
 
                             <!-- Chapter 4 -->
-                            <a class="chapter-row group flex items-center justify-between p-4 rounded-xl hover:bg-background-light transition-all border border-transparent hover:border-primary/10" href="chapter4.html">
+                            <a class="chapter-row group flex items-center justify-between p-4 rounded-xl bg-background-light/80 border border-transparent" href="chapter4.html">
                                 <div class="flex items-center gap-4 md:gap-6">
-                                    <span class="flex-shrink-0 w-10 h-10 rounded-full bg-[#f1f3f3] flex items-center justify-center text-text-muted font-bold text-sm group-hover:bg-primary group-hover:text-white transition-colors">
+                                    <span class="flex-shrink-0 w-10 h-10 rounded-full bg-[#f1f3f3] flex items-center justify-center text-text-muted font-bold text-sm">
                                         04
                                     </span>
                                     <div class="flex flex-col">
-                                        <span class="text-base font-bold text-text-main group-hover:text-primary transition-colors">The Case That Stumped Popcorn</span>
-                                        <span class="text-xs text-text-muted mt-1">Silver and Seal vanish—or do they? A mystery, Morse code, and Watergalaxy</span>
+                                        <span class="text-base font-bold text-text-main">The Case That Stumped Popcorn</span>
+                                        <span class="text-xs text-text-muted mt-1">Available in the full book</span>
                                     </div>
                                 </div>
-                                <div class="flex items-center gap-6">
-                                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-700 uppercase tracking-wide">Complete</span>
-                                    <span class="material-symbols-outlined text-gray-300 chapter-arrow opacity-0 transition-all duration-300">arrow_forward</span>
+                                <div class="flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-text-muted text-[18px]">lock</span>
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-gray-100 text-text-muted uppercase tracking-wide">Amazon</span>
+                                </div>
+                            </a>
+
+                            <a class="chapter-row group flex items-center justify-between p-4 rounded-xl bg-background-light/80 border border-transparent" href="chapter5.html">
+                                <div class="flex items-center gap-4 md:gap-6">
+                                    <span class="flex-shrink-0 w-10 h-10 rounded-full bg-[#f1f3f3] flex items-center justify-center text-text-muted font-bold text-sm">
+                                        05
+                                    </span>
+                                    <div class="flex flex-col">
+                                        <span class="text-base font-bold text-text-main">New Look, New Adventures</span>
+                                        <span class="text-xs text-text-muted mt-1">Available in the full book</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-text-muted text-[18px]">lock</span>
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-gray-100 text-text-muted uppercase tracking-wide">Amazon</span>
                                 </div>
                             </a>
                         </div>
